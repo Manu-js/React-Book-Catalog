@@ -1,0 +1,9 @@
+.tittleBook{
+    font-size: 25px;
+    text-align: left;
+}
+.genreList{
+    background-color: bisque;
+    padding: 5px;
+    margin: 0 0 0 10px;
+}

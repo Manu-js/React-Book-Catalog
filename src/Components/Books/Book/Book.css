@@ -1,0 +1,30 @@
+.bookCard{
+    text-decoration: none;
+    display: inline-block;
+    margin:2px;
+    padding: 20px;
+    width: 200px;
+    height: 300px;
+    padding: 2px;
+    background-color: blueviolet;
+
+}
+
+.bookCard:hover{
+ color:white;
+ border:2px solid black;
+ padding: 0px;
+}
+
+.bookLink{
+    overflow: hidden;
+    width: 200px;
+    height: 300px;
+    display: inline-block;
+    margin-right: 5px;
+    color: white;
+}
+
+.bookTittle{
+    font-size: 20px;
+}
