@@ -25,27 +25,12 @@ class App extends Component {
         books: prevState.books.map((book, index) => {
 
           if ((index + 1) == (bookSelected.id)) {
-            if (name === "tittle") {
+
               book = {
                 ...book,
-                tittle: value
+                [name]: value
               }
-            } else if (name === "resume") {
-              book = {
-                ...book,
-                resume: value
-              }
-            } else if (name === "price") {
-              book = {
-                ...book,
-                price: value
-              }
-            } else if (name === "isbn") {
-              book = {
-                ...book,
-                isbn: value
-              }
-            }
+
 
           }
 
