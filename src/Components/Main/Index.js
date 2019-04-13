@@ -8,7 +8,8 @@ class Main extends Component {
     const {
       books,
       deleteBook,
-      handleChangeEdit
+      handleChangeEdit,
+      handleNewBook
     } = this.props;
     return (
       <main className="row">
@@ -19,7 +20,7 @@ class Main extends Component {
               path="/"
               render={() => {
                 return (
-                  <Booklist books={books} />
+                  <Booklist books={books} handleNewBook={handleNewBook} />
                 )
               }}
             />
@@ -27,7 +28,7 @@ class Main extends Component {
               path="/book/:id"
               render={props => {
                 return (
-                  <BookEdit match={props.match} books={books} deleteBook={deleteBook} handleChangeEdit={handleChangeEdit}/>
+                  <BookEdit match={props.match} books={books} deleteBook={deleteBook} handleChangeEdit={handleChangeEdit} />
                 )
               }}
             />

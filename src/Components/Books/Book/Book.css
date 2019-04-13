@@ -4,27 +4,26 @@
     margin:2px;
     padding: 20px;
     width: 200px;
-    height: 300px;
+    height: 50px;
     padding: 2px;
-    background-color: blueviolet;
+    border-radius: 5px;
+    border: 1px solid grey;
 
 }
 
 .bookCard:hover{
- color:white;
+ color:black;
  border:2px solid black;
  padding: 0px;
 }
 
 .bookLink{
     overflow: hidden;
-    width: 200px;
-    height: 300px;
     display: inline-block;
     margin-right: 5px;
-    color: white;
+    color: black;
 }
 
 .bookTittle{
-    font-size: 20px;
+    font-size: 15px;
 }

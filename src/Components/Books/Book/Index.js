@@ -11,7 +11,7 @@ class Book extends Component {
         className="bookLink"
         to={`/book/${book.id}`}
       >
-        <li className="bookCard"><p className="bookTittle">{book.tittle}</p><p>{book.resume}</p></li>
+        <li className="bookCard"><p className="bookTittle">{book.tittle}</p></li>
       </Link>
 
     );
