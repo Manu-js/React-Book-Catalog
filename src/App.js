@@ -24,7 +24,7 @@ class App extends Component {
     this.setState(prevState => {
       const newState = {
         books: prevState.books.map((book, index) => {
-          if ((index + 1) == (bookSelected.id)) {
+          if ((index) === (bookSelected.id)) {
               book = {
                 ...book,
                 [name]: value
@@ -45,8 +45,7 @@ class App extends Component {
       "genres":["drama","suspense"],
       "image":"http://hp-api.herokuapp.com/images/harry.jpg",
       "id": this.state.books.length,
-      "price":"20",
-      "isbn":"38219831892"
+      "price":20
       };
     this.setState(previousState => ({
       books: [...previousState.books, newBook]
@@ -71,7 +70,7 @@ class App extends Component {
       const newState = {
         books: prevState.books.map((book, ind) => {
 
-          if (ind == (idBook - 1)) {
+          if (ind === idBook) {
 
             book = {
               ...book,

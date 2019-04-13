@@ -21,8 +21,9 @@ class BookEdit extends Component {
   render() {
     const { match, books, deleteBook, handleChangeEdit } = this.props;
     const selectedId = match.params.id;
+    console.log("ADAWD AWD AWD AW",selectedId)
     const selectBook = books.find(
-      book => book.id === selectedId
+      book => book.id === parseInt(selectedId)
     );
 
     return (
