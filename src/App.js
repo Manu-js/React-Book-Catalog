@@ -17,9 +17,8 @@ class App extends Component {
     this.deleteBook = this.deleteBook.bind(this);
     this.handleChangeEdit = this.handleChangeEdit.bind(this);
     this.handleNewBook = this.handleNewBook.bind(this);
-
-
   }
+
   handleChangeEdit(name, bookSelected, value) {
     this.setState(prevState => {
       const newState = {
@@ -37,24 +36,44 @@ class App extends Component {
     })
 
   }
-  handleNewBook(value, value1, value2) {
-    console.log("el tamaño es: ", this.state.books);
+  handleNewBook(value, value1) {
     const newBook = {
       "tittle": value,
       "resume": value1,
       "genres": ["drama", "suspense"],
       "image": "http://hp-api.herokuapp.com/images/harry.jpg",
-      "id": this.state.books.length,
+      "id": this.state.books.length, // corregir esto. Esto hace que puedas tener dos ID. Necesito coger la ultima id y sumar una mas
       "price": 20
     };
-    this.setState(previousState => ({
-      books: [...previousState.books, newBook]
+    this.setState(prevState => ({
+      books: [...prevState.books, newBook]
     }));
+    this.handleNewGenre(1,1)
+  }
 
+  handleNewGenre(genreName, idBook){
+    genreName = ["pepe", "popo", "pipi"]
+    this.setState(prevState => {
+      const newState = {
+        books: prevState.books.map((book, index) => {
+          console.log("1");
+          if ((index) === (idBook)) {
+            console.log("2")
+            book = {
+              ...book,
+              genres: genreName
+            }
+            console.log("3");
+          }
+          return book;
+        })
+      }
+      return newState;
+    })
   }
   deleteBook(idBook) {
-    this.setState(prevState =>({
-      books: prevState.books.filter(book => book.id !== parseInt(idBook)) 
+    this.setState(prevState => ({
+      books: prevState.books.filter(book => book.id !== parseInt(idBook))
     }));
   }
 

@@ -25,7 +25,8 @@ class Booklist extends Component {
           {books.map(function (book, i) {
             return <Book key={book.id} book={book} />
           })}
-          <Button onClick={this.handleOpen}>Open Modal</Button>
+        </ul>
+        <Button variant="contained" color="primary" className="addButton" onClick={this.handleOpen}>New book</Button>
           <Modal
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"
@@ -34,7 +35,6 @@ class Booklist extends Component {
           >
             <NewBook handleNewBook={handleNewBook}></NewBook>
           </Modal>
-        </ul>
       </div>
     );
   }

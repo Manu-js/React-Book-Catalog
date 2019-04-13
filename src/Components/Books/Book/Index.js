@@ -11,7 +11,10 @@ class Book extends Component {
         className="bookLink"
         to={`/book/${book.id}`}
       >
-        <li className="bookCard"><p className="bookTittle">{book.tittle}</p></li>
+        <li className="bookCard">
+         <img src={book.image} alt="Logo" />
+          <p className="bookTittle">{book.tittle}</p>
+        </li>
       </Link>
 
     );

@@ -3,8 +3,8 @@
     display: inline-block;
     margin:2px;
     padding: 20px;
-    width: 200px;
-    height: 50px;
+    width: 245px;
+    height: 384px;
     padding: 2px;
     border-radius: 5px;
     border: 1px solid grey;
@@ -13,7 +13,7 @@
 
 .bookCard:hover{
  color:black;
- border:2px solid black;
+ border:3px solid black;
  padding: 0px;
 }
 
