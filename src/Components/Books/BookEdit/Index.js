@@ -11,6 +11,13 @@ class BookEdit extends Component {
     open: false,
 
   };
+
+  constructor(props) {
+		super(props);
+
+		this.deleteThisBook = this.deleteThisBook.bind(this);
+  }
+  
   handleOpen = () => {
     this.setState({ open: true });
   };
@@ -18,10 +25,14 @@ class BookEdit extends Component {
   handleClose = () => {
     this.setState({ open: false });
   };
+  deleteThisBook(){
+    const { deleteBook, match} = this.props;
+
+    deleteBook(match.params.id);
+  }
   render() {
-    const { match, books, deleteBook, handleChangeEdit } = this.props;
+    const { match, books, handleChangeEdit } = this.props;
     const selectedId = match.params.id;
-    console.log("ADAWD AWD AWD AW",selectedId)
     const selectBook = books.find(
       book => book.id === parseInt(selectedId)
     );
@@ -59,7 +70,9 @@ class BookEdit extends Component {
             </React.Fragment>
           ))}
         </div>
-        <button onClick={deleteBook} id={selectedId}>Delete</button>
+        <Link className="" to={`/`}>
+          <Button onClick={this.deleteThisBook} id={selectedId}>Delete</Button>
+        </Link>
       </div>
     );
   }

@@ -25,10 +25,10 @@ class App extends Component {
       const newState = {
         books: prevState.books.map((book, index) => {
           if ((index) === (bookSelected.id)) {
-              book = {
-                ...book,
-                [name]: value
-              }
+            book = {
+              ...book,
+              [name]: value
+            }
           }
           return book;
         })
@@ -38,53 +38,26 @@ class App extends Component {
 
   }
   handleNewBook(value, value1, value2) {
-    console.log("el tamaño es: ",this.state.books);
-    const newBook =  {
+    console.log("el tamaño es: ", this.state.books);
+    const newBook = {
       "tittle": value,
       "resume": value1,
-      "genres":["drama","suspense"],
-      "image":"http://hp-api.herokuapp.com/images/harry.jpg",
+      "genres": ["drama", "suspense"],
+      "image": "http://hp-api.herokuapp.com/images/harry.jpg",
       "id": this.state.books.length,
-      "price":20
-      };
+      "price": 20
+    };
     this.setState(previousState => ({
       books: [...previousState.books, newBook]
-  }));
+    }));
 
   }
-  deleteBook(e) {
-    var array = [...this.state.books]; // make a separate copy of the array
-
-    // 		books: prevState.books.filter(() => {
-    // 			    array.map(function (item, i) {
-    //             if (item.id == idBook){
-    //                array.splice(i, 1);
-    //             }
-    //           })
-    //           return array;
-    // 		})
-    // 	}
-
-    const idBook = e.target.id;
-    this.setState(prevState => {
-      const newState = {
-        books: prevState.books.map((book, ind) => {
-
-          if (ind === idBook) {
-
-            book = {
-              ...book,
-              tittle: "pepe"
-            }
-            console.log(book);
-          }
-
-          return book;
-        })
-      }
-      return newState;
-    })
+  deleteBook(idBook) {
+    this.setState(prevState =>({
+      books: prevState.books.filter(book => book.id !== parseInt(idBook)) 
+    }));
   }
+
 
   componentDidMount() {
     const auxArray = [];

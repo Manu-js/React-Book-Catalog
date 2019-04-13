@@ -28,10 +28,9 @@ class ModalEditBook extends Component {
     const { bookSelected} = this.props;
     return (
             <div>
-                <input type="text" name="tittle" value={bookSelected.tittle} onChange={this.onBookUpdate} />
-                <input type="text" name="price" value={bookSelected.price} onChange={this.onBookUpdate} />
-                <input type="text" name="isbn" value={bookSelected.isbn} onChange={this.onBookUpdate} />
-                <textarea type="text" name="resume" value={bookSelected.resume}  onChange={this.onBookUpdate} />
+               tittle <input type="text" name="tittle" value={bookSelected.tittle} onChange={this.onBookUpdate} />
+               price  <input type="text" name="price" value={bookSelected.price} onChange={this.onBookUpdate} />
+               resume <textarea type="text" name="resume" value={bookSelected.resume}  onChange={this.onBookUpdate} />
             </div>
        
     );
