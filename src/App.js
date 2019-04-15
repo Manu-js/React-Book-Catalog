@@ -14,16 +14,21 @@ class App extends Component {
       books: booksJson,
       genreList: []
     };
+    
     this.deleteBook = this.deleteBook.bind(this);
     this.handleChangeEdit = this.handleChangeEdit.bind(this);
     this.handleNewBook = this.handleNewBook.bind(this);
+    this.handleDeleteGenre = this.handleDeleteGenre.bind(this);
+    this.handleAddGenre = this.handleAddGenre.bind(this);
+
   }
 
   handleChangeEdit(name, bookSelected, value) {
     this.setState(prevState => {
       const newState = {
         books: prevState.books.map((book, index) => {
-          if ((index) === (bookSelected.id)) {
+
+          if (book.id == bookSelected.id) {
             book = {
               ...book,
               [name]: value
@@ -35,6 +40,23 @@ class App extends Component {
       return newState;
     })
 
+  }
+  handleAddGenre(idBook, genre){
+
+    this.setState(prevState => {
+      const newState = {
+        books: prevState.books.map((book, index) => {
+          if (book.id == idBook) {
+            book = {
+              ...book,
+              genres: genre
+            }
+          }
+          return book;
+        })
+      }
+      return newState;
+    })
   }
   handleNewBook(value, value1) {
     const newBook = {
@@ -48,22 +70,17 @@ class App extends Component {
     this.setState(prevState => ({
       books: [...prevState.books, newBook]
     }));
-    this.handleNewGenre(1,1)
   }
 
-  handleNewGenre(genreName, idBook){
-    genreName = ["pepe", "popo", "pipi"]
+  handleDeleteGenre(idBook, genre) {
     this.setState(prevState => {
       const newState = {
         books: prevState.books.map((book, index) => {
-          console.log("1");
-          if ((index) === (idBook)) {
-            console.log("2")
+          if (book.id == idBook) {
             book = {
               ...book,
-              genres: genreName
+              genres : genre
             }
-            console.log("3");
           }
           return book;
         })
@@ -71,10 +88,14 @@ class App extends Component {
       return newState;
     })
   }
+  
   deleteBook(idBook) {
-    this.setState(prevState => ({
-      books: prevState.books.filter(book => book.id !== parseInt(idBook))
-    }));
+    this.setState(prevState => {
+      const newState = {
+        books: prevState.books.filter(book => book.id !== parseInt(idBook))
+      }
+      return newState;
+    });
   }
 
 
@@ -82,7 +103,7 @@ class App extends Component {
     const auxArray = [];
     booksJson.map(function (item, i) {
       item.genres.map(function (item, i) {
-        if (auxArray.indexOf(item) === -1) {
+        if (auxArray.indexOf(item) == -1) {
           auxArray.push(item);
         }
       });
@@ -98,7 +119,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Main books={books} deleteBook={this.deleteBook} handleChangeEdit={this.handleChangeEdit} handleNewBook={this.handleNewBook} />
+        <Main books={books} handleAddGenre={this.handleAddGenre} deleteBook={this.deleteBook} handleChangeEdit={this.handleChangeEdit} handleDeleteGenre={this.handleDeleteGenre} handleNewBook={this.handleNewBook} />
       </div>
     );
   }

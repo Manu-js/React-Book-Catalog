@@ -9,7 +9,9 @@ class Main extends Component {
       books,
       deleteBook,
       handleChangeEdit,
-      handleNewBook
+      handleNewBook,
+      handleDeleteGenre,
+      handleAddGenre
     } = this.props;
     return (
       <main className="row">
@@ -28,7 +30,7 @@ class Main extends Component {
               path="/book/:id"
               render={props => {
                 return (
-                  <BookEdit match={props.match} books={books} deleteBook={deleteBook} handleChangeEdit={handleChangeEdit} />
+                  <BookEdit match={props.match} books={books} handleAddGenre={handleAddGenre} deleteBook={deleteBook} handleChangeEdit={handleChangeEdit} handleDeleteGenre={handleDeleteGenre} />
                 )
               }}
             />
