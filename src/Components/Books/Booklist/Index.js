@@ -21,7 +21,7 @@ class Booklist extends Component {
   };
 
   render() {
-    const { books,genresFiltered, handleNewBook, genres, handleSelectGenre } = this.props;
+    const { books,genresFiltered, handleNewBook, genres, handleSelectGenre, deleteBook, handleChangeEdit, handleDeleteGenre, handleAddGenre } = this.props;
     return (
       <div className="row"> 
         <div className="col-md-12">
@@ -34,7 +34,7 @@ class Booklist extends Component {
         <div className="col-md-12">
           <ul>
             {books.map(function (book, i) {
-              return <Book key={book.id} book={book} />
+              return <Book key={book.id} book={book} handleAddGenre={handleAddGenre} deleteBook={deleteBook} handleChangeEdit={handleChangeEdit} handleDeleteGenre={handleDeleteGenre}  />
             })}
           </ul>
           <Button variant="contained" color="primary" className="addButton" onClick={this.handleOpen}>New book</Button>

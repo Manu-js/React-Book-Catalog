@@ -1,9 +1,15 @@
 import React from "react";
 import "./Menuoption.css";
+import { Link } from 'react-router-dom';
 
-const Menuoption = ({ characters }) => {
+const Menuoption = ({ characters, url }) => {
     return (
-        <li className="menuItem">{characters}</li>
+        <Link to={url} className="menu__link">
+
+        <li className="menuItem">               
+         {characters}
+        </li>
+        </Link>
     );
 }
 

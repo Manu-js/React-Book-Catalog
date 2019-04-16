@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./Main.css";
 import Booklist from "../Books/Booklist/Index";
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import BookEdit from '../Books/BookEdit/Index'
+import { Switch, Route } from 'react-router-dom';
+
 class Main extends Component {
   render() {
     const {
@@ -18,27 +18,25 @@ class Main extends Component {
     } = this.props;
     return (
       <main className="row">
-        <BrowserRouter>
           <Switch>
             <Route
               exact
               path="/"
               render={() => {
                 return (
-                  <Booklist genresFiltered={genresFiltered} books={books} genres={genres} handleSelectGenre={handleSelectGenre} handleNewBook={handleNewBook} handleFilter={handleFilter}/>
+                  <Booklist handleChangeEdit={handleChangeEdit} genresFiltered={genresFiltered} books={books} genres={genres} handleAddGenre={handleAddGenre} deleteBook={deleteBook} handleChangeEdit={handleChangeEdit} handleDeleteGenre={handleDeleteGenre} handleSelectGenre={handleSelectGenre} handleNewBook={handleNewBook}/>
                 )
               }}
             />
             <Route
-              path="/book/:id"
-              render={props => {
+              path="/config"
+              render={() => {
                 return (
-                  <BookEdit match={props.match} books={books} handleAddGenre={handleAddGenre} deleteBook={deleteBook} handleChangeEdit={handleChangeEdit} handleDeleteGenre={handleDeleteGenre} />
-                )
+                  <p>JEJEJEJEJEJEJE</p>
+                  )
               }}
             />
           </Switch>
-        </BrowserRouter>
 
       </main>
     );

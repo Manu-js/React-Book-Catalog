@@ -11,7 +11,7 @@ class Menu  extends Component {
         <nav className="menu">
           <ul className="">
               <Menuoption url="/" characters="books" />
-              <Menuoption url="/edit" characters="genre" />
+              <Menuoption url="/config" characters="Configuracion" />
           </ul>
         </nav>
     </div>

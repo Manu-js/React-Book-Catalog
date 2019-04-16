@@ -163,16 +163,17 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Main books={books}
-         genres={genres}
-         genresFiltered={genresFiltered} 
+        <Main 
+          books={books}
+          genres={genres}
+          genresFiltered={genresFiltered} 
           handleSelectGenre={this.handleSelectGenre}
-            handleAddGenre={this.handleAddGenre} 
-            deleteBook={this.deleteBook} 
-            handleChangeEdit={this.handleChangeEdit} 
-            handleDeleteGenre={this.handleDeleteGenre}
-             handleNewBook={this.handleNewBook} 
-             />
+          handleAddGenre={this.handleAddGenre} 
+          deleteBook={this.deleteBook} 
+          handleChangeEdit={this.handleChangeEdit} 
+          handleDeleteGenre={this.handleDeleteGenre}
+          handleNewBook={this.handleNewBook} 
+        />
       </div>
     );
   }
