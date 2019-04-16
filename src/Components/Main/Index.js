@@ -7,11 +7,14 @@ class Main extends Component {
   render() {
     const {
       books,
+      genres,
+      genresFiltered,
       deleteBook,
       handleChangeEdit,
       handleNewBook,
       handleDeleteGenre,
-      handleAddGenre
+      handleAddGenre,
+      handleSelectGenre
     } = this.props;
     return (
       <main className="row">
@@ -22,7 +25,7 @@ class Main extends Component {
               path="/"
               render={() => {
                 return (
-                  <Booklist books={books} handleNewBook={handleNewBook} />
+                  <Booklist genresFiltered={genresFiltered} books={books} genres={genres} handleSelectGenre={handleSelectGenre} handleNewBook={handleNewBook} handleFilter={handleFilter}/>
                 )
               }}
             />
@@ -33,12 +36,6 @@ class Main extends Component {
                   <BookEdit match={props.match} books={books} handleAddGenre={handleAddGenre} deleteBook={deleteBook} handleChangeEdit={handleChangeEdit} handleDeleteGenre={handleDeleteGenre} />
                 )
               }}
-            />
-            <Route
-              path="/genre"
-              render={() => (
-                <Booklist books={books} />
-              )}
             />
           </Switch>
         </BrowserRouter>

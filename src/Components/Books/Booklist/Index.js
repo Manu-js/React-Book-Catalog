@@ -4,8 +4,10 @@ import Book from '../Book/Index'
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
 import NewBook from '../NewBook/Index';
+import GenreCheckBox from '../Genre/Index';
 
 class Booklist extends Component {
+
   state = {
     openModal: false,
 
@@ -17,17 +19,27 @@ class Booklist extends Component {
   handleClose = () => {
     this.setState({ openModal: false });
   };
+
   render() {
-    const { books, handleNewBook } = this.props;
+    const { books,genresFiltered, handleNewBook, genres, handleSelectGenre } = this.props;
     return (
-      <div className="col-md-12">
+      <div className="row"> 
+        <div className="col-md-12">
         <ul>
-          {books.map(function (book, i) {
-            return <Book key={book.id} book={book} />
-          })}
+            {genres.map(function (genre, i) {
+              return <GenreCheckBox genresFiltered={genresFiltered} handleSelectGenre={handleSelectGenre} genre={genre}></GenreCheckBox>
+            })}
         </ul>
-        <Button variant="contained" color="primary" className="addButton" onClick={this.handleOpen}>New book</Button>
+        </div>
+        <div className="col-md-12">
+          <ul>
+            {books.map(function (book, i) {
+              return <Book key={book.id} book={book} />
+            })}
+          </ul>
+          <Button variant="contained" color="primary" className="addButton" onClick={this.handleOpen}>New book</Button>
           <Modal
+            header="Modal Header"
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"
             open={this.state.openModal}
@@ -35,6 +47,7 @@ class Booklist extends Component {
           >
             <NewBook handleNewBook={handleNewBook}></NewBook>
           </Modal>
+        </div>
       </div>
     );
   }
