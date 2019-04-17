@@ -22,7 +22,7 @@ class App extends Component {
     this.handleDeleteGenre = this.handleDeleteGenre.bind(this);
     this.handleAddGenre = this.handleAddGenre.bind(this);
     this.handleSelectGenre = this.handleSelectGenre.bind(this);
-
+    this.deleteAllBook = this.deleteAllBook.bind(this);
   }
   
   getGenres() {
@@ -56,26 +56,50 @@ class App extends Component {
       genresFiltered: auxArray
     }));
     
-    var arrayAux = [];
-    this.state.books.map((book) => {
-      const found = book.genres.some(r=> auxArray.indexOf(r) >= 0)
-      
-      if (found === true){
-        arrayAux.push(book)
-      }
-    })
-    if (arrayAux.length !== 0) {
-      this.setState(prevState => ({
-        books: arrayAux
-      }));
-    } else {
-      this.setState(prevState => ({
-        books: booksJson
-      }));
-    }
   })
 
   }
+  getBookList(){
+    const { books, genresFiltered } = this.state;
+    let auxVar = []
+    for (const book of books) {
+      const found = book.genres.some(r=> genresFiltered.indexOf(r) >= 0)
+      
+      if (found === true){
+        auxVar.push(book)
+      } 
+    }
+
+    if(auxVar.length !== 0) {
+      return auxVar;
+    } else{
+      return books;
+    }
+  }
+
+  deleteAllBook(){
+    this.setState({books: []});
+  }
+
+  // deleteAllBook(){
+  //   this.setState(prevState => {
+  //     const newState = {
+  //       books: prevState.books.map((book, index) => {
+
+  //           book = {
+  //             ...book,
+  //             genres: []
+  //           }
+          
+  //         return book;
+  //       }),
+  //       genres:[],
+  //       genresFiltered:[]
+  //     }
+  //     return newState;
+  //   })
+  // }
+
 
   handleChangeEdit(name, bookSelected, value) {
     this.setState(prevState => {
@@ -168,7 +192,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <Main 
-          books={books}
+          books={this.getBookList()}
           genres={genres}
           genresFiltered={genresFiltered} 
           handleSelectGenre={this.handleSelectGenre}
@@ -176,7 +200,8 @@ class App extends Component {
           deleteBook={this.deleteBook} 
           handleChangeEdit={this.handleChangeEdit} 
           handleDeleteGenre={this.handleDeleteGenre}
-          handleNewBook={this.handleNewBook} 
+          handleNewBook={this.handleNewBook}
+          deleteAllBook={this.deleteAllBook}
         />
       </div>
     );

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./Main.css";
 import Booklist from "../Books/Booklist/Index";
+import Option from "../Option/Index";
+
 import { Switch, Route } from 'react-router-dom';
 
 class Main extends Component {
@@ -14,7 +16,8 @@ class Main extends Component {
       handleNewBook,
       handleDeleteGenre,
       handleAddGenre,
-      handleSelectGenre
+      handleSelectGenre,
+      deleteAllBook
     } = this.props;
     return (
       <main className="row">
@@ -32,7 +35,7 @@ class Main extends Component {
               path="/config"
               render={() => {
                 return (
-                  <p>JEJEJEJEJEJEJE</p>
+                  <Option deleteAllBook={deleteAllBook}></Option>
                   )
               }}
             />
