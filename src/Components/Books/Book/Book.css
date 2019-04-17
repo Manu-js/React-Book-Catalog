@@ -1,22 +1,19 @@
 .bookCard{
     text-decoration: none;
     display: inline-block;
-    margin:2px;
+    padding:2px;
+    margin: 2px;
     padding: 20px;
-    width: 245px;
-    height: 384px;
-    padding: 2px;
+    width: 49%;
+    height: 330px;
     border-radius: 5px;
     border: 1px solid grey;
 
 }
-
-.bookCard:hover{
- color:black;
- border:3px solid black;
- padding: 0px;
+.imgBook{
+    height: 300px;
+    
 }
-
 .bookLink{
     overflow: hidden;
     display: inline-block;
@@ -25,5 +22,12 @@
 }
 
 .bookTittle{
-    font-size: 15px;
+    font-size: 20px;
+}
+.bookResume{
+    text-align: justify;
+    height: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    line-height: 1.4
 }

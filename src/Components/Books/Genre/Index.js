@@ -31,7 +31,6 @@ class GenreCheckBox extends Component {
         <input type="checkbox" 
           value={genre}
           onChange={this.checkGenre} 
-          defaultChecked={this.state.checked}
           checked={genresFiltered.indexOf(genre) > -1}
 
           />

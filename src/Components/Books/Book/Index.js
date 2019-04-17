@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
 import ModalEditBook from '../ModalEditBook/Index';
@@ -20,27 +19,30 @@ class Book extends Component {
     this.setState({ open: false });
   };
   render() {
-    const { book, handleChangeEdit, deleteBook, handleDeleteGenre, handleAddGenre} = this.props;
+    const { book, handleChangeEdit, deleteBook, handleDeleteGenre, handleAddGenre } = this.props;
 
     return (
-      // <Link
-      //   className="bookLink"
-      //   to={`/book/${book.id}`}
-      // >
-        <li className="bookCard">
-         <img src={book.image} alt="Logo" />
-          <p className="bookTittle">{book.tittle}</p>
-          <Button onClick={this.handleOpen}>Open Modal</Button>
-          <Modal
-            header="Modal Header"
-            aria-labelledby="simple-modal-title"
-            aria-describedby="simple-modal-description"
-            open={this.state.open}
-            onClose={this.handleClose}
-          >
-            <ModalEditBook deleteBook={deleteBook} bookSelected={book} handleAddGenre={handleAddGenre} handleChangeEdit={handleChangeEdit} handleDeleteGenre={handleDeleteGenre}></ModalEditBook>
-          </Modal>
-        </li>
+      <li className="bookCard">
+        <div className="row">
+          <div className="col-md-5">
+            <img className="imgBook" src={book.image} alt="Logo" />
+          </div>
+          <div className="col-md-7">
+            <h1 className="bookTittle">{book.tittle}</h1>
+            <p className="bookResume">{book.resume}</p>
+            <Button variant="outlined" color="primary" onClick={this.handleOpen}>Editar</Button>
+            <Modal
+              header="Modal Header"
+              aria-labelledby="simple-modal-title"
+              aria-describedby="simple-modal-description"
+              open={this.state.open}
+              onClose={this.handleClose}
+            >
+              <ModalEditBook deleteBook={deleteBook} bookSelected={book} handleAddGenre={handleAddGenre} handleChangeEdit={handleChangeEdit} handleDeleteGenre={handleDeleteGenre}></ModalEditBook>
+            </Modal>
+          </div>
+        </div>
+      </li>
       // </Link>
 
 

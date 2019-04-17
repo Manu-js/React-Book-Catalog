@@ -24,7 +24,7 @@ class Main extends Component {
               path="/"
               render={() => {
                 return (
-                  <Booklist handleChangeEdit={handleChangeEdit} genresFiltered={genresFiltered} books={books} genres={genres} handleAddGenre={handleAddGenre} deleteBook={deleteBook} handleChangeEdit={handleChangeEdit} handleDeleteGenre={handleDeleteGenre} handleSelectGenre={handleSelectGenre} handleNewBook={handleNewBook}/>
+                  <Booklist genresFiltered={genresFiltered} books={books} genres={genres} handleAddGenre={handleAddGenre} deleteBook={deleteBook} handleChangeEdit={handleChangeEdit} handleDeleteGenre={handleDeleteGenre} handleSelectGenre={handleSelectGenre} handleNewBook={handleNewBook}/>
                 )
               }}
             />

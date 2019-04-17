@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
 import NewBook from '../NewBook/Index';
 import GenreCheckBox from '../Genre/Index';
+import AddIcon from '@material-ui/icons/Add';
 
 class Booklist extends Component {
 
@@ -27,7 +28,7 @@ class Booklist extends Component {
         <div className="col-md-12">
         <ul>
             {genres.map(function (genre, i) {
-              return <GenreCheckBox genresFiltered={genresFiltered} handleSelectGenre={handleSelectGenre} genre={genre}></GenreCheckBox>
+              return <GenreCheckBox key={genre} genresFiltered={genresFiltered} handleSelectGenre={handleSelectGenre} genre={genre}></GenreCheckBox>
             })}
         </ul>
         </div>
@@ -37,7 +38,8 @@ class Booklist extends Component {
               return <Book key={book.id} book={book} handleAddGenre={handleAddGenre} deleteBook={deleteBook} handleChangeEdit={handleChangeEdit} handleDeleteGenre={handleDeleteGenre}  />
             })}
           </ul>
-          <Button variant="contained" color="primary" className="addButton" onClick={this.handleOpen}>New book</Button>
+          <Button variant="contained" color="primary" className="addButton" onClick={this.handleOpen}>New book<AddIcon />
+          </Button>
           <Modal
             header="Modal Header"
             aria-labelledby="simple-modal-title"

@@ -29,7 +29,7 @@ class App extends Component {
     const auxArray = [];
     booksJson.map(function (item, i) {
       item.genres.map(function (item, i) {
-        if (auxArray.indexOf(item) == -1) {
+        if (auxArray.indexOf(item) === -1) {
           auxArray.push(item);
         }
       });
@@ -56,23 +56,23 @@ class App extends Component {
       genresFiltered: auxArray
     }));
     
-    // var arrayAux = [];
-    // this.state.books.map((book) => {
-    //   const found = book.genres.some(r=> auxArray.indexOf(r) >= 0)
+    var arrayAux = [];
+    this.state.books.map((book) => {
+      const found = book.genres.some(r=> auxArray.indexOf(r) >= 0)
       
-    //   if (found === true){
-    //     arrayAux.push(book)
-    //   }
-    // })
-    // if (arrayAux.length !== 0) {
-    //   this.setState(prevState => ({
-    //     books: arrayAux
-    //   }));
-    // } else {
-    //   this.setState(prevState => ({
-    //     books: booksJson
-    //   }));
-    // }
+      if (found === true){
+        arrayAux.push(book)
+      }
+    })
+    if (arrayAux.length !== 0) {
+      this.setState(prevState => ({
+        books: arrayAux
+      }));
+    } else {
+      this.setState(prevState => ({
+        books: booksJson
+      }));
+    }
   })
 
   }
@@ -82,7 +82,7 @@ class App extends Component {
       const newState = {
         books: prevState.books.map((book, index) => {
 
-          if (book.id == bookSelected.id) {
+          if (book.id === bookSelected.id) {
             book = {
               ...book,
               [name]: value
@@ -95,23 +95,27 @@ class App extends Component {
     })
 
   }
-  handleAddGenre(idBook, genre) {
-
+  
+  handleAddGenre(genre, idBook) {
     this.setState(prevState => {
       const newState = {
         books: prevState.books.map((book, index) => {
-          if (book.id == idBook) {
+          if (book.id === idBook) {
             book = {
               ...book,
-              genres: genre
+              genres: book.genres.concat(genre)
             }
           }
           return book;
-        })
+        }),
+        genres: prevState.genres.concat(genre) 
+
       }
       return newState;
     })
+
   }
+
   handleNewBook(value, value1) {
     const newBook = {
       "tittle": value,
@@ -130,7 +134,7 @@ class App extends Component {
     this.setState(prevState => {
       const newState = {
         books: prevState.books.map((book, index) => {
-          if (book.id == idBook) {
+          if (book.id === idBook) {
             book = {
               ...book,
               genres: genre
