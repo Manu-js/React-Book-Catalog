@@ -24,14 +24,15 @@ class App extends Component {
     this.handleSelectGenre = this.handleSelectGenre.bind(this);
     this.deleteAllBook = this.deleteAllBook.bind(this);
   }
-  
+
   getGenres() {
     const auxArray = [];
-    booksJson.map(function (item, i) {
-      item.genres.map(function (item, i) {
+    booksJson.map((item, i) => {
+      return item.genres.map((item, i) => {
         if (auxArray.indexOf(item) === -1) {
           auxArray.push(item);
         }
+        return auxArray;
       });
     })
     this.setState(prevState => ({
@@ -43,56 +44,48 @@ class App extends Component {
     const { checked, value } = e;
     this.setState(prevState => {
 
-    let auxArray = prevState.genresFiltered;
-    if (!checked) {
-      var index = auxArray.indexOf(value)
-      if (index !== -1) {
-        auxArray.splice(index, 1);
+      let auxArray = prevState.genresFiltered;
+      if (!checked) {
+        var index = auxArray.indexOf(value)
+        if (index !== -1) {
+          auxArray.splice(index, 1);
+        }
+      } else {
+        auxArray.push(value)
       }
-    } else {
-      auxArray.push(value)
-    }
-    this.setState(prevState => ({
-      genresFiltered: auxArray
-    }));
-    
-  })
+      this.setState(prevState => ({
+        genresFiltered: auxArray
+      }));
+
+    })
 
   }
-  getBookList(){
+  getBookList() {
     const { books, genresFiltered } = this.state;
     let auxVar = []
     for (const book of books) {
-      const found = book.genres.some(r=> genresFiltered.indexOf(r) >= 0)
-      
-      if (found === true){
+      const found = book.genres.some(r => genresFiltered.indexOf(r) >= 0)
+
+      if (found === true) {
         auxVar.push(book)
-      } 
+      }
     }
 
-    if(auxVar.length !== 0) {
+    if (auxVar.length !== 0) {
       return auxVar;
-    } else{
+    } else {
       return books;
     }
   }
 
-  deleteAllBook(){
-    this.setState({books: []});
+  deleteAllBook() {
+    this.setState({ books: [] });
   }
 
   // deleteAllBook(){
   //   this.setState(prevState => {
   //     const newState = {
-  //       books: prevState.books.map((book, index) => {
-
-  //           book = {
-  //             ...book,
-  //             genres: []
-  //           }
-          
-  //         return book;
-  //       }),
+  //       books: [],
   //       genres:[],
   //       genresFiltered:[]
   //     }
@@ -119,7 +112,7 @@ class App extends Component {
     })
 
   }
-  
+
   handleAddGenre(genre, idBook) {
     this.setState(prevState => {
       const newState = {
@@ -132,7 +125,7 @@ class App extends Component {
           }
           return book;
         }),
-        genres: prevState.genres.concat(genre) 
+        genres: prevState.genres.concat(genre)
 
       }
       return newState;
@@ -140,14 +133,14 @@ class App extends Component {
 
   }
 
-  handleNewBook(value, value1) {
+  handleNewBook(newTittle, newResume, newPrice) {
     const newBook = {
-      "tittle": value,
-      "resume": value1,
+      "tittle": newTittle,
+      "resume": newResume,
+      "price": newPrice,
       "genres": ["drama", "suspense"],
       "image": "http://hp-api.herokuapp.com/images/harry.jpg",
       "id": this.state.books.length, // corregir esto. Esto hace que puedas tener dos ID. Necesito coger la ultima id y sumar una mas
-      "price": 20
     };
     this.setState(prevState => ({
       books: [...prevState.books, newBook]
@@ -187,18 +180,18 @@ class App extends Component {
   }
 
   render() {
-    const { books, genres, genresFiltered } = this.state;
+    const { genres, genresFiltered } = this.state;
     return (
       <div className="App">
         <Header />
-        <Main 
+        <Main
           books={this.getBookList()}
           genres={genres}
-          genresFiltered={genresFiltered} 
+          genresFiltered={genresFiltered}
           handleSelectGenre={this.handleSelectGenre}
-          handleAddGenre={this.handleAddGenre} 
-          deleteBook={this.deleteBook} 
-          handleChangeEdit={this.handleChangeEdit} 
+          handleAddGenre={this.handleAddGenre}
+          deleteBook={this.deleteBook}
+          handleChangeEdit={this.handleChangeEdit}
           handleDeleteGenre={this.handleDeleteGenre}
           handleNewBook={this.handleNewBook}
           deleteAllBook={this.deleteAllBook}

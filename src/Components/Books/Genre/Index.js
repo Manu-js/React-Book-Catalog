@@ -1,5 +1,18 @@
 import React, { Component } from "react";
 import "./Genre.css";
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = {
+  root: {
+    color: "#3F51B5" ,
+    '&$checked': {
+      color: "#3F51B5",
+    },
+  },
+  checked: {},
+};
 
 class GenreCheckBox extends Component {
   state = {
@@ -25,21 +38,29 @@ class GenreCheckBox extends Component {
 
   render() {
     const { genre, genresFiltered } = this.props;
+    const { classes } = this.props;
 
     return (
-      <p className="auxName">
-        <input type="checkbox" 
-          value={genre}
-          onChange={this.checkGenre} 
+            
+      <FormControlLabel
+      control={
+        <Checkbox
           checked={genresFiltered.indexOf(genre) > -1}
+          onChange={this.checkGenre}
+          value={genre}
+          color="primary"
+          classes={{
+            root: classes.root,
+            checked: classes.checked,
+          }}
+        />
+      }
+      label={genre}
+    />
 
-          />
-          
-        <span>{genre}</span>
-      </p>
     );
   }
 }
 
 
-export default GenreCheckBox;
+export default withStyles(styles)(GenreCheckBox);

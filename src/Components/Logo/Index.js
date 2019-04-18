@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import "./Main.css";
 
-class Main extends Component {
+class Logo extends Component {
     render() {
       return (
-        <div className="col-md-2"> Logo </div>
+       <p>Logo</p>
       );
     }
 };
-export default Main;
+export default Logo;

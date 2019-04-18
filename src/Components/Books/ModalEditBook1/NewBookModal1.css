@@ -3,11 +3,12 @@
     bottom: 13px !important;
     right: 17px !important;
 }
-.listGenres{
+.editButton{
+    position: absolute;
+    top: 6px;
     display: inline-block;
-    height: 36px;
-    text-align: left;
+    right: 7px;
 }
-.listGenres span{
-    color:white
+.containerAddButton{
+    position: relative;
 }

@@ -7,7 +7,7 @@ class Menu  extends Component {
   
   render() { 
     return (
-    <div className="col-md-10">
+    <div>
         <nav className="menu">
           <ul className="">
               <Menuoption url="/" characters="books" />

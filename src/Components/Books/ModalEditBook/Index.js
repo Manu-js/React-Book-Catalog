@@ -21,7 +21,6 @@ class ModalEditBook extends Component {
     this.showNewGenre = this.showNewGenre.bind(this);
   }
   handleAddGenre(event) {
-    console.log("awdawd")
     if (event.key === "Enter") {
       event.preventDefault();
       event.stopPropagation();
@@ -109,7 +108,6 @@ class ModalEditBook extends Component {
                   onKeyDown={this.handleAddGenre}
                   margin="normal"
                 />
-          //<input type="text" onKeyDown={this.handleAddGenre} />
         ) : (
           <Button onClick={this.showNewGenre}> + </Button>
         )}

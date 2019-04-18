@@ -6,9 +6,7 @@ const Menuoption = ({ characters, url }) => {
     return (
         <Link to={url} className="menu__link">
 
-        <li className="menuItem">               
          {characters}
-        </li>
         </Link>
     );
 }

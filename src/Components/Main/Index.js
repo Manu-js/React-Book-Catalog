@@ -20,7 +20,7 @@ class Main extends Component {
       deleteAllBook
     } = this.props;
     return (
-      <main className="row">
+      <main className="app__main">
           <Switch>
             <Route
               exact

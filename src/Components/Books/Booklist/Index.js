@@ -1,56 +1,27 @@
 import React, { Component } from "react";
 import "./Booklist.css";
 import Book from '../Book/Index'
-import Button from '@material-ui/core/Button';
-import Modal from '@material-ui/core/Modal';
-import NewBook from '../NewBook/Index';
+import NewBookModal from '../NewBookModal/Index';
 import GenreCheckBox from '../Genre/Index';
-import AddIcon from '@material-ui/icons/Add';
 
 class Booklist extends Component {
-
-  state = {
-    openModal: false,
-
-  };
-  handleOpen = () => {
-    this.setState({ openModal: true });
-  };
-
-  handleClose = () => {
-    this.setState({ openModal: false });
-  };
 
   render() {
     const { books,genresFiltered, handleNewBook, genres, handleSelectGenre, deleteBook, handleChangeEdit, handleDeleteGenre, handleAddGenre } = this.props;
     return (
-      <div className="row"> 
-        <div className="col-md-12">
-        <ul>
+      <section> 
+        <ul >
             {genres.map(function (genre, i) {
-              return <GenreCheckBox key={genre} genresFiltered={genresFiltered} handleSelectGenre={handleSelectGenre} genre={genre}></GenreCheckBox>
+              return <li className="listGenres"><GenreCheckBox key={genre} genresFiltered={genresFiltered} handleSelectGenre={handleSelectGenre} genre={genre}></GenreCheckBox></li>
             })}
         </ul>
-        </div>
-        <div className="col-md-12">
-          <ul>
-            {books.map(function (book, i) {
-              return <Book key={book.id} book={book} handleAddGenre={handleAddGenre} deleteBook={deleteBook} handleChangeEdit={handleChangeEdit} handleDeleteGenre={handleDeleteGenre}  />
-            })}
-          </ul>
-          <Button variant="contained" color="primary" className="addButton" onClick={this.handleOpen}>New book<AddIcon />
-          </Button>
-          <Modal
-            header="Modal Header"
-            aria-labelledby="simple-modal-title"
-            aria-describedby="simple-modal-description"
-            open={this.state.openModal}
-            onClose={this.handleClose}
-          >
-            <NewBook handleNewBook={handleNewBook}></NewBook>
-          </Modal>
-        </div>
-      </div>
+        <ul>
+          {books.map(function (book, i) {
+            return <Book key={book.id} book={book} handleAddGenre={handleAddGenre} deleteBook={deleteBook} handleChangeEdit={handleChangeEdit} handleDeleteGenre={handleDeleteGenre}  />
+          })}
+        </ul>
+        <NewBookModal handleNewBook={handleNewBook}></NewBookModal>
+      </section>
     );
   }
 }
