@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField';
 class AddGenre extends Component {
   state = {
     visibleView: false
-
+    
   };
   constructor(props) {
     super(props);
@@ -36,8 +36,8 @@ class AddGenre extends Component {
   isGenreExist(inputGenre){
     const { selectBook } = this.props;
     return selectBook.genres.indexOf(inputGenre);
-
   }
+  
   showNewGenre() {
     this.setState({ visibleView: true });
   }

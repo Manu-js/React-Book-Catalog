@@ -39,6 +39,7 @@ class DeleteAllBooks extends React.Component {
 
     return (
       <div>
+        <span>Delete all boks: </span>
         <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
          <span>Delete</span> <EditIcon />
         </Button>

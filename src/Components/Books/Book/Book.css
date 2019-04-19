@@ -10,8 +10,9 @@
     background-color: #717171;
 }
 .imgBook{
-    height: 200px;
-    
+    max-height: 200px;   
+    width: 100%;
+    max-width: 140px; 
 }
 .bookLink{
     overflow: hidden;

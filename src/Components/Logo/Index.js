@@ -1,12 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import "./Main.css";
 import imagen from "../../img/logo.png"
 
-class Logo extends Component {
-  render() {
-    return (
-      <img src={imagen} alt="logo" className="logo"></img>
-    );
-  }
-};
+const Logo = () => (
+
+  <img src={imagen} alt="logo" className="logo"></img>
+);
+
 export default Logo;

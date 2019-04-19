@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import "./BookGenres.css";
+import "./GenreList.css";
 
-class BookGenres extends Component {
+class GenreList extends Component {
   state = {
     visibleView: false
 
@@ -11,29 +11,6 @@ class BookGenres extends Component {
     super(props);
 
     this.handleDeleteGenre = this.handleDeleteGenre.bind(this);
-    this.handleAddGenre = this.handleAddGenre.bind(this);
-    this.showNewGenre = this.showNewGenre.bind(this);
-  }
-
-  handleAddGenre(event) {
-    const { handleAddGenre, selectBook } = this.props;
-
-    if (event.key === "Enter") {
-      event.preventDefault();
-      event.stopPropagation();
-
-      handleAddGenre(
-        event.target.value,
-        selectBook.id
-      );
-      this.hideNewGenre();
-    }
-  }
-  showNewGenre() {
-    this.setState({ visibleView: true });
-  }
-  hideNewGenre() {
-    this.setState({ visibleView: false });
   }
 
   handleDeleteGenre(e) {
@@ -73,4 +50,4 @@ class BookGenres extends Component {
 }
 
 
-export default BookGenres;
+export default GenreList;

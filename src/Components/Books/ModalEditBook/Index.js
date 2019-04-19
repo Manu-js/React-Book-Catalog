@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import BookGenres from "../BookGenres/Index";
+import GenreList from "../GenreList/Index";
 import AddGenre from "../AddGenre/Index";
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -92,7 +92,7 @@ class ModalEditBook extends Component {
               fullWidth
             />
 
-            <BookGenres
+            <GenreList
               selectBook={bookSelected}
               handleDeleteGenre={handleDeleteGenre}
               handleAddGenre={handleAddGenre}

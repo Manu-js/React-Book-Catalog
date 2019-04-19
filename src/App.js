@@ -13,7 +13,14 @@ class App extends Component {
     this.state = {
       books: booksJson,
       genres: [],
-      genresFiltered: []
+      genresFiltered: [],
+      newBookData: {
+        tittle: '',
+        resume: '',
+        price: '',
+        genres: [''],
+        image: ''
+      },
     };
 
     this.deleteBook = this.deleteBook.bind(this);
@@ -23,6 +30,19 @@ class App extends Component {
     this.handleAddGenre = this.handleAddGenre.bind(this);
     this.handleSelectGenre = this.handleSelectGenre.bind(this);
     this.deleteAllBook = this.deleteAllBook.bind(this);
+    this.addNewBookParam = this.addNewBookParam.bind(this);
+  }
+  addNewBookParam(name, value){
+    let { newBookData } = this.state;
+
+    newBookData.tittle = value;
+    this.setState({ newBookData:  newBookData = {
+      ...newBookData,
+      [name]: value
+    } });
+
+    
+
   }
 
   getGenres() {
@@ -139,13 +159,14 @@ class App extends Component {
 
   }
   
-  handleNewBook(newTittle, newResume, newPrice) {
+  handleNewBook(newTittle, newResume, newPrice, newGenres) {
+    
     const newId = (this.state.books[this.state.books.length -1].id) + 1;
     const newBook = {
       "tittle": newTittle,
       "resume": newResume,
       "price": newPrice,
-      "genres": ["drama", "suspense"],
+      "genres": newGenres,
       "image": "http://hp-api.herokuapp.com/images/harry.jpg",
       "id": newId, // corregir esto. Esto hace que puedas tener dos ID. Necesito coger la ultima id y sumar una mas
     };
@@ -187,7 +208,7 @@ class App extends Component {
   }
 
   render() {
-    const { genres, genresFiltered } = this.state;
+    const { genres, genresFiltered, newBookData } = this.state;
     return (
       <div className="App">
         <Header />
@@ -195,6 +216,7 @@ class App extends Component {
           books={this.getBookList()}
           genres={genres}
           genresFiltered={genresFiltered}
+          newBookData={newBookData}
           handleSelectGenre={this.handleSelectGenre}
           handleAddGenre={this.handleAddGenre}
           deleteBook={this.deleteBook}
@@ -202,6 +224,7 @@ class App extends Component {
           handleDeleteGenre={this.handleDeleteGenre}
           handleNewBook={this.handleNewBook}
           deleteAllBook={this.deleteAllBook}
+          addNewBookParam={this.addNewBookParam}
         />
       </div>
     );

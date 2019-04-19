@@ -1,24 +1,21 @@
-import React, { Component } from "react";
+import React from "react";
 import "./Main.css";
-import Booklist from "../Books/Booklist/Index";
+import BooksView from "../Books/BooksView/Index";
 import Option from "../Config/Option/Index";
 import { Switch, Route } from 'react-router-dom';
 
-class Main extends Component {
-  render() {
-    const {
-      books,
-      genres,
-      genresFiltered,
-      deleteBook,
-      handleChangeEdit,
-      handleNewBook,
-      handleDeleteGenre,
-      handleAddGenre,
-      handleSelectGenre,
-      deleteAllBook
-    } = this.props;
-    return (
+const Main = ({books, genres,
+  newBookData,
+  genresFiltered,
+  deleteBook,
+  handleChangeEdit,
+  handleNewBook,
+  handleDeleteGenre,
+  handleAddGenre,
+  handleSelectGenre,
+  deleteAllBook,
+  addNewBookParam}) => (
+
       <main className="app__main">
         <Switch>
           <Route
@@ -26,7 +23,7 @@ class Main extends Component {
             path="/"
             render={() => {
               return (
-                <Booklist
+                <BooksView
                 genresFiltered={genresFiltered}
                 books={books}
                 genres={genres}
@@ -36,6 +33,8 @@ class Main extends Component {
                 handleDeleteGenre={handleDeleteGenre}
                 handleSelectGenre={handleSelectGenre}
                 handleNewBook={handleNewBook}
+                addNewBookParam={addNewBookParam}
+                newBookData={newBookData}
                 />
               )
             }}
@@ -54,8 +53,8 @@ class Main extends Component {
 
       </main>
     );
-  }
-};
+
+
 
 
 export default Main;

@@ -1,18 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import ModalEditBook from '../ModalEditBook/Index';
-import BookGenres from "../BookGenres/Index";
+import GenreList from "../GenreList/Index";
 
 import Grid from '@material-ui/core/Grid';
 
 import "./Book.css";
 
-class Book extends Component {
-
-  render() {
-    const { book, handleChangeEdit, deleteBook, handleDeleteGenre, handleAddGenre, genres } = this.props;
-
-    return (
-      <li key={book.id} className="bookCard">
+const Book = ({book, handleChangeEdit, deleteBook, handleDeleteGenre, handleAddGenre, genres}) => (
+  <li key={book.id} className="bookCard">
         <Grid container spacing={24}>
           <Grid item xs={2}>
             <img className="imgBook" src={book.image} alt="Logo" />
@@ -21,10 +16,9 @@ class Book extends Component {
 
             <h1 className="bookTittle">{book.tittle}</h1>
             <p className="bookResume">{book.resume}</p>
-            <BookGenres
+            <GenreList
               selectBook={book}
               handleDeleteGenre={handleDeleteGenre}
-              handleAddGenre={handleAddGenre}
               editOption={false}
             />           
             <ModalEditBook
@@ -40,11 +34,6 @@ class Book extends Component {
 
         </Grid>
       </li>
-
-
-    );
-  }
-}
-
+  );
 
 export default Book;
