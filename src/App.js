@@ -21,6 +21,7 @@ class App extends Component {
         genres: [''],
         image: ''
       },
+      isLoaded: false
     };
 
     this.deleteBook = this.deleteBook.bind(this);
@@ -208,14 +209,22 @@ class App extends Component {
     });
   }
 
-
   componentDidMount() {
     this.getGenres();
+    setTimeout(function() { //Start the timer
 
+      this.setState(prevState => {
+        const newState = {
+          isLoaded: true
+        }
+        return newState;
+      });
+
+     }.bind(this), 2000)
   }
 
   render() {
-    const { genres, genresFiltered, newBookData } = this.state;
+    const { genres, genresFiltered, newBookData , isLoaded} = this.state;
     return (
       <div className="App">
         <Header />
@@ -232,6 +241,7 @@ class App extends Component {
           handleNewBook={this.handleNewBook}
           deleteAllBook={this.deleteAllBook}
           addNewBookParam={this.addNewBookParam}
+          isLoaded =  {isLoaded}
         />
       </div>
     );

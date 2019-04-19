@@ -7,3 +7,8 @@
 .listGenres span{
     color:white
 }
+
+.loadDataSpiner{
+    position:relative;
+    top: 100px;
+}

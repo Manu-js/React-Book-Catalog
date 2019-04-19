@@ -3,10 +3,12 @@ import "./BooksView.css";
 import ModalNewBook from '../ModalNewBook/Index';
 import CheckList from '../CheckList/Index';
 import BookList from '../BookList/Index';
-
-const Booklist = ({ books, newBookData, addNewBookParam, genresFiltered, handleNewBook, genres, handleSelectGenre, deleteBook, handleChangeEdit, handleDeleteGenre, handleAddGenre }) => (
+import CircularProgress from '@material-ui/core/CircularProgress';
+const Booklist = ({ isLoaded ,books, newBookData, addNewBookParam, genresFiltered, handleNewBook, genres, handleSelectGenre, deleteBook, handleChangeEdit, handleDeleteGenre, handleAddGenre }) => (
 
   <section>
+   {isLoaded === true ? (
+     <div>
     <CheckList 
       genresFiltered={genresFiltered} 
       genres={genres} 
@@ -25,6 +27,11 @@ const Booklist = ({ books, newBookData, addNewBookParam, genresFiltered, handleN
       addNewBookParam={addNewBookParam}
       newBookData={newBookData}
       handleDeleteGenre={handleDeleteGenre} />
+      </div>
+    ) : (
+      <CircularProgress className="loadDataSpiner"  color="secondary" />
+     )}
+    
   </section>
 );
 
