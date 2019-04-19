@@ -62,80 +62,8 @@ const booksJson =[
        "image":"https://imagessl8.casadellibro.com/a/l/t5/28/9788445073728.jpg",
       "id": 7,
       "price":"20"
-      },
-    {
-       "tittle":"8",
-       "resume":"bla bla bla bla bla bla",
-       "genres":["action","jeje","juju"],
-       "image":"https://imagessl8.casadellibro.com/a/l/t5/28/9788445073728.jpg",
-      "id": 8,
-      "price":"20"
-      },
-    {
-       "tittle":"9",
-       "resume":"jeje",
-       "genres":["action","jeje","juju"],
-       "image":"https://imagessl8.casadellibro.com/a/l/t5/28/9788445073728.jpg",
-      "id": 9,
-      "price":"20"
-      },
-    {
-       "tittle":"10",
-       "resume":"bla bla bla bla bla bla",
-       "genres":["action","jeje","juju"],
-       "image":"https://imagessl8.casadellibro.com/a/l/t5/28/9788445073728.jpg",
-      "id": 10,
-      "price":"20"
-      },
-    {
-       "tittle":"11",
-       "resume":"bla bla bla bla bla bla",
-       "genres":["action","jeje","juju"],
-       "image":"https://imagessl8.casadellibro.com/a/l/t5/28/9788445073728.jpg",
-      "id": 11,
-      "price":"20"
-      },
-    {
-       "tittle":"12",
-       "resume":"bla bla bla bla bla bla",
-       "genres":["action","jeje","juju"],
-       "image":"https://imagessl8.casadellibro.com/a/l/t5/28/9788445073728.jpg",
-      "id": 12,
-      "price":"20"
-      },
-    {
-       "tittle":"13",
-       "resume":"bla bla bla bla bla bla",
-       "genres":["action","jeje","juju"],
-       "image":"https://imagessl8.casadellibro.com/a/l/t5/28/9788445073728.jpg",
-      "id": 13,
-      "price":"20"
-      },
-    {
-       "tittle":"14",
-       "resume":"dawd",
-       "genres":["action","jeje","juju"],
-       "image":"https://imagessl8.casadellibro.com/a/l/t5/28/9788445073728.jpg",
-      "id": 14,
-      "price":"20"
-      },
-    {
-       "tittle":"15",
-       "resume":"bla bla bla bla bla bla",
-       "genres":["action","jeje","juju"],
-       "image":"https://imagessl8.casadellibro.com/a/l/t5/28/9788445073728.jpg",
-      "id": 15,
-      "price":"20"
-      },
-    {
-       "tittle":"16",
-       "resume":"bla bla bla bla bla bla",
-       "genres":["action","jeje","juju"],
-       "image":"https://imagessl8.casadellibro.com/a/l/t5/28/9788445073728.jpg",
-      "id": 16,
-      "price":"20"
-    
-    }
+      }
+   
  ];
 
 export { booksJson };

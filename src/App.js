@@ -125,7 +125,7 @@ class App extends Component {
           }
           return book;
         }),
-        genres: prevState.genres.concat(genre)
+        genres: this.isGenreExist(genre) === -1 ? (prevState.genres.concat(genre)) : (prevState.genres),
 
       }
       return newState;
@@ -133,14 +133,21 @@ class App extends Component {
 
   }
 
+  isGenreExist(inputGenre){
+    const genres = this.state.genres;
+    return genres.indexOf(inputGenre);
+
+  }
+  
   handleNewBook(newTittle, newResume, newPrice) {
+    const newId = (this.state.books[this.state.books.length -1].id) + 1;
     const newBook = {
       "tittle": newTittle,
       "resume": newResume,
       "price": newPrice,
       "genres": ["drama", "suspense"],
       "image": "http://hp-api.herokuapp.com/images/harry.jpg",
-      "id": this.state.books.length, // corregir esto. Esto hace que puedas tener dos ID. Necesito coger la ultima id y sumar una mas
+      "id": newId, // corregir esto. Esto hace que puedas tener dos ID. Necesito coger la ultima id y sumar una mas
     };
     this.setState(prevState => ({
       books: [...prevState.books, newBook]

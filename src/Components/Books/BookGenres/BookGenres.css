@@ -1,0 +1,17 @@
+.genreList{
+    background-color: #8d8d8d;
+    padding: 5px;
+    margin: 0 0 0 10px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 7px;
+}
+.genreAddList{
+    display: inline-block;
+}
+.genreListWrap{
+    float: left;
+    padding-left: 0px;
+    margin-left: 0px;
+    margin-top: 10px;
+}

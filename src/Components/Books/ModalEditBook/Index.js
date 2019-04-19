@@ -1,37 +1,31 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import Button from "@material-ui/core/Button";
-import Genres from "../Genres/Index";
-import DeleteIcon from "@material-ui/icons/Delete";
+
+import BookGenres from "../BookGenres/Index";
+import AddGenre from "../AddGenre/Index";
+import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import EditIcon from '@material-ui/icons/Edit';
 import "./ModalEditBook.css";
 
 class ModalEditBook extends Component {
-  state = {
-    open: false,
-    visibleView: false
-  };
-
   constructor(props) {
     super(props);
 
     this.onBookUpdate = this.onBookUpdate.bind(this);
     this.deleteThisBook = this.deleteThisBook.bind(this);
-    this.handleAddGenre = this.handleAddGenre.bind(this);
-    this.showNewGenre = this.showNewGenre.bind(this);
   }
-  handleAddGenre(event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      event.stopPropagation();
-      
-      const { handleAddGenre, bookSelected } = this.props;
-      handleAddGenre(
-        event.target.value,
-        bookSelected.id
-      );
-      this.hideNewGenre();
-    }
+  state = {
+    open: false,
+    visibleView: false
+  };
+
+  deleteThisBook() {
+    const { deleteBook, bookSelected } = this.props;
+    deleteBook(bookSelected.id);
   }
 
   onBookUpdate(e) {
@@ -39,13 +33,14 @@ class ModalEditBook extends Component {
     handleChangeEdit(e.currentTarget.name, bookSelected, e.currentTarget.value);
   }
 
-  handleOpen = () => {
+  handleClickOpen = () => {
     this.setState({ open: true });
   };
 
   handleClose = () => {
     this.setState({ open: false });
   };
+
   showNewGenre() {
     this.setState({ visibleView: true });
   }
@@ -53,79 +48,87 @@ class ModalEditBook extends Component {
     this.setState({ visibleView: false });
   }
 
-  deleteThisBook() {
-    const { deleteBook, bookSelected } = this.props;
-
-    deleteBook(bookSelected.id);
-  }
   render() {
-    const { bookSelected, handleDeleteGenre } = this.props;
+    const { bookSelected, handleDeleteGenre, handleAddGenre, genres } = this.props;
+
     return (
-      <div className="modalBackground row">
-        <div className="col-md-12">
-        <h1 className="editTittle">Edit book</h1>
-         <form className="container" noValidate autoComplete="off">
-        <TextField
-          id="tittle"
-          label="Tittle"
-          name="tittle"
-          value={bookSelected.tittle}
-          onChange={this.onBookUpdate}
-          margin="normal"
-          fullWidth
-        />
-        
-         <TextField
-          id="price"
-          label="Price"
-          name="price"
-          value={bookSelected.price}
-          onChange={this.onBookUpdate}
-          margin="normal"
-          fullWidth
-        />
-          <TextField
-          id="resume"
-          label="Resume"
-          name="resume"
-          value={bookSelected.resume}
-          onChange={this.onBookUpdate}
-          margin="normal"
-          fullWidth
-        />
-        </form>
-        </div>
+      <div className="editButton">
+        <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
+          <EditIcon />
+        </Button>
 
-        <Genres
-          selectBook={bookSelected}
-          handleDeleteGenre={handleDeleteGenre}
-        />
-        {this.state.visibleView === true ? (
-                  <TextField
-                  id="newGenre"
-                  label="New genre"
-                  name="newGenre"
-                  onKeyDown={this.handleAddGenre}
-                  margin="normal"
-                />
-        ) : (
-          <Button onClick={this.showNewGenre}> + </Button>
-        )}
+        <Dialog
+          open={this.state.open}
+          onClose={this.handleClose}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">Modify Book</DialogTitle>
+          <DialogContent>
+            <TextField
+              id="tittle"
+              label="Tittle"
+              name="tittle"
+              value={bookSelected.tittle}
+              onChange={this.onBookUpdate}
+              margin="normal"
+              fullWidth
+            />
+            <TextField
+              id="price"
+              label="Price"
+              name="price"
+              value={bookSelected.price}
+              onChange={this.onBookUpdate}
+              margin="normal"
+              fullWidth
+            />
+            <TextField
+              id="resume"
+              label="Resume"
+              name="resume"
+              value={bookSelected.resume}
+              onChange={this.onBookUpdate}
+              margin="normal"
+              fullWidth
+            />
 
-        <Link className="" to={`/`}>
+            <BookGenres
+              selectBook={bookSelected}
+              handleDeleteGenre={handleDeleteGenre}
+              handleAddGenre={handleAddGenre}
+              editOption={true}
+
+            />
+            <AddGenre 
+              handleAddGenre={handleAddGenre}
+              selectBook={bookSelected}
+              genres={genres}
+            />
+          </DialogContent>
+          <DialogActions>
           <Button
-            variant="contained"
-            color="secondary"
-            onClick={this.deleteThisBook}
-            id={bookSelected.id}
-          >
-            Delete
-            <DeleteIcon />
-          </Button>
-        </Link>
+              variant="contained"
+              onClick={this.handleClose}
+              id={bookSelected.id}>
+              Cancel
+            </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={this.deleteThisBook}
+              id={bookSelected.id}>
+              Delete Book
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.handleClose}>
+              Update
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     );
   }
 }
-
 export default ModalEditBook;

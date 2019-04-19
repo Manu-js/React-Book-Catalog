@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import "./Genres.css";
+import "./BookGenres.css";
 
-class BookEdit extends Component {
+class BookGenres extends Component {
   state = {
     visibleView: false
 
@@ -15,8 +13,6 @@ class BookEdit extends Component {
     this.handleDeleteGenre = this.handleDeleteGenre.bind(this);
     this.handleAddGenre = this.handleAddGenre.bind(this);
     this.showNewGenre = this.showNewGenre.bind(this);
-
-
   }
 
   handleAddGenre(event) {
@@ -25,7 +21,7 @@ class BookEdit extends Component {
     if (event.key === "Enter") {
       event.preventDefault();
       event.stopPropagation();
-      
+
       handleAddGenre(
         event.target.value,
         selectBook.id
@@ -52,29 +48,29 @@ class BookEdit extends Component {
     handleDeleteGenre(selectBook.id, arrayAux);
   }
   render() {
-    const { selectBook } = this.props;
+    const { selectBook,editOption } = this.props;
     return (
-      <ul>
+      <ul className="genreListWrap">
         {selectBook.genres.map(item => (
-          <li onClick={this.handleDeleteGenre} id={item} key={item} className="genreList">{item}</li>
+          editOption === true ? (
+          <li
+            onClick={this.handleDeleteGenre}
+            id={item}
+            key={item}
+            className="genreList">{item}
+          </li>
+          ):(
+            <li
+            id={item}
+            key={item}
+            className="genreList">{item}
+          </li>
+          )
         ))}
-        <li className="genreAddList"> 
-        {this.state.visibleView === true ? (
-                  <TextField
-                  id="newGenre"
-                  label="New genre"
-                  name="newGenre"
-                  onKeyDown={this.handleAddGenre}
-                  margin="normal"
-                />
-        ) : (
-          <Button onClick={this.showNewGenre}> + </Button>
-        )}
-        </li>
       </ul>
     );
   }
 }
 
 
-export default BookEdit;
+export default BookGenres;

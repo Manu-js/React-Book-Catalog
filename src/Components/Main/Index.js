@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import "./Main.css";
 import Booklist from "../Books/Booklist/Index";
-import Option from "../Option/Index";
-
+import Option from "../Config/Option/Index";
 import { Switch, Route } from 'react-router-dom';
 
 class Main extends Component {
@@ -21,25 +20,37 @@ class Main extends Component {
     } = this.props;
     return (
       <main className="app__main">
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => {
-                return (
-                  <Booklist genresFiltered={genresFiltered} books={books} genres={genres} handleAddGenre={handleAddGenre} deleteBook={deleteBook} handleChangeEdit={handleChangeEdit} handleDeleteGenre={handleDeleteGenre} handleSelectGenre={handleSelectGenre} handleNewBook={handleNewBook}/>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => {
+              return (
+                <Booklist
+                genresFiltered={genresFiltered}
+                books={books}
+                genres={genres}
+                handleAddGenre={handleAddGenre}
+                deleteBook={deleteBook}
+                handleChangeEdit={handleChangeEdit}
+                handleDeleteGenre={handleDeleteGenre}
+                handleSelectGenre={handleSelectGenre}
+                handleNewBook={handleNewBook}
+                />
+              )
+            }}
+          />
+          <Route
+            path="/config"
+            render={() => {
+              return (
+                <Option
+                 deleteAllBook={deleteAllBook}>
+                </Option>
                 )
-              }}
-            />
-            <Route
-              path="/config"
-              render={() => {
-                return (
-                  <Option deleteAllBook={deleteAllBook}></Option>
-                  )
-              }}
-            />
-          </Switch>
+            }}
+          />
+        </Switch>
 
       </main>
     );
