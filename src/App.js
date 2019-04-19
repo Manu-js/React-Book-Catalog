@@ -62,9 +62,8 @@ class App extends Component {
 
   handleSelectGenre(e) {
     const { checked, value } = e;
-    this.setState(prevState => {
 
-      let auxArray = prevState.genresFiltered;
+      let auxArray = this.state.genresFiltered;
       if (!checked) {
         var index = auxArray.indexOf(value)
         if (index !== -1) {
@@ -77,7 +76,7 @@ class App extends Component {
         genresFiltered: auxArray
       }));
 
-    })
+    
 
   }
   getBookList() {
@@ -162,6 +161,13 @@ class App extends Component {
   handleNewBook(newTittle, newResume, newPrice, newGenres) {
     
     const newId = (this.state.books[this.state.books.length -1].id) + 1;
+    
+    let newGenreArray = this.state.genres;
+    newGenres.map((genre) => {
+      if (this.isGenreExist(genre) === -1){
+        newGenreArray.push(genre);
+      }
+    })
     const newBook = {
       "tittle": newTittle,
       "resume": newResume,
@@ -171,9 +177,10 @@ class App extends Component {
       "id": newId, // corregir esto. Esto hace que puedas tener dos ID. Necesito coger la ultima id y sumar una mas
     };
     this.setState(prevState => ({
-      books: [...prevState.books, newBook]
-    }));
+      books: [...prevState.books, newBook],
+      genres: newGenreArray,
   }
+    ))}
 
   handleDeleteGenre(idBook, genre) {
     this.setState(prevState => {

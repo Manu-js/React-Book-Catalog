@@ -4,9 +4,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
 class GenreCheck extends Component {
-  state = {
-    checked: false
-  }
+
   constructor(props) {
     super(props);
     this.checkGenre = this.checkGenre.bind(this);
@@ -14,7 +12,6 @@ class GenreCheck extends Component {
 
   checkGenre(e) {
     const { handleSelectGenre } = this.props;
-    this.setState({ checked: !this.state.checked });
     handleSelectGenre(e.currentTarget)
   }
 
