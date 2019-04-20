@@ -3,13 +3,10 @@ import CloseIcon from '@material-ui/icons/Close';
 import "./GenreList.css";
 
 class GenreList extends Component {
-
   constructor(props) {
     super(props);
-
     this.handleDeleteGenre = this.handleDeleteGenre.bind(this);
   }
-
   handleDeleteGenre(e) {
     const { handleDeleteGenre, selectBook } = this.props;
     let arrayAux = [];
@@ -22,11 +19,10 @@ class GenreList extends Component {
     handleDeleteGenre(selectBook.id, arrayAux);
   }
   render() {
-
     const { selectBook, editOption } = this.props;
     return (
       <ul className="genreListWrap">
-      <span>Genres list: </span>
+        <span>Genres list: </span>
         {selectBook.genres.map(item => (
           editOption === true ? (
             <li
@@ -34,7 +30,7 @@ class GenreList extends Component {
               key={item}
               value={item}
               className="genreList">
-              {item} 
+              {item}
               <CloseIcon id={item} style={{ fontSize: 15 }} className="closeButton" onClick={this.handleDeleteGenre} />
             </li>
           ) : (
@@ -42,7 +38,6 @@ class GenreList extends Component {
                 id={item}
                 key={item}
                 value={item}
-
                 className="genreList">{item}
               </li>
             )
@@ -51,6 +46,5 @@ class GenreList extends Component {
     );
   }
 }
-
 
 export default GenreList;

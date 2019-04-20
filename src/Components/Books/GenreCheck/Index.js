@@ -1,25 +1,20 @@
 import React, { Component } from "react";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 import "./GenreCheck.css";
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 
 class GenreCheck extends Component {
-
   constructor(props) {
     super(props);
     this.checkGenre = this.checkGenre.bind(this);
   }
-
   checkGenre(e) {
     const { handleSelectGenre } = this.props;
-    handleSelectGenre(e.currentTarget)
+    handleSelectGenre(e.currentTarget);
   }
-
   render() {
     const { genre, genresFiltered } = this.props;
-
     return (
-
       <FormControlLabel
         control={
           <Checkbox
@@ -31,10 +26,8 @@ class GenreCheck extends Component {
         }
         label={genre}
       />
-
     );
   }
 }
-
 
 export default GenreCheck;

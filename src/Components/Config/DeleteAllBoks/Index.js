@@ -7,43 +7,33 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import EditIcon from '@material-ui/icons/Edit';
 
-
 class DeleteAllBooks extends React.Component {
   constructor(props) {
     super(props);
     this.deleteAllBook = this.deleteAllBook.bind(this);
-
   }
   state = {
     open: false,
     visibleView: false
   };
-
   deleteAllBook() {
     const { deleteAllBook } = this.props;
     deleteAllBook();
     this.handleClose();
-
   }
-
   handleClickOpen = () => {
     this.setState({ open: true });
   };
-
   handleClose = () => {
     this.setState({ open: false });
   };
-
-
   render() {
-
     return (
       <div>
         <span>Delete all boks: </span>
         <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
           <span>Delete</span> <EditIcon />
         </Button>
-
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
@@ -54,17 +44,14 @@ class DeleteAllBooks extends React.Component {
             <DialogContentText>
               Your books will be permanently deleted. You won't be able to retrieve anything you've added.
             </DialogContentText>
-
           </DialogContent>
           <DialogActions>
-
             <Button
               onClick={this.deleteAllBook}
               variant="contained"
               color="secondary">
               Delete
             </Button>
-
             <Button
               variant="contained"
               color="primary"

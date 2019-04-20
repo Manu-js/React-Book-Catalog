@@ -1,13 +1,12 @@
 import React from "react";
-import "./Main.css";
 import BooksView from "../Books/BooksView/Index";
 import Option from "../Config/Option/Index";
 import { Switch, Route } from 'react-router-dom';
+import "./Main.css";
 
 const Main = ({
   books,
   genres,
-  newBookData,
   genresFiltered,
   deleteBook,
   handleChangeEdit,
@@ -18,7 +17,6 @@ const Main = ({
   deleteAllBook,
   addNewBookParam,
   isLoaded }) => (
-
     <main className="app__main">
       <Switch>
         <Route
@@ -55,8 +53,5 @@ const Main = ({
       </Switch>
     </main>
   );
-
-
-
 
 export default Main;

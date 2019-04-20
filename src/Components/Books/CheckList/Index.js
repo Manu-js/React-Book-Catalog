@@ -1,9 +1,8 @@
 import React from "react";
-import "./CheckList.css";
 import GenreCheck from '../GenreCheck/Index';
+import "./CheckList.css";
 
-const CheckList = ({genresFiltered, genres, handleSelectGenre }) => (
-
+const CheckList = ({ genresFiltered, genres, handleSelectGenre }) => (
   <section>
     <ul >
       {genres.map(function (genre) {

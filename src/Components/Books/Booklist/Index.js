@@ -1,9 +1,8 @@
 import React from "react";
-import "./BookList.css";
 import Book from '../Book/Index'
+import "./BookList.css";
 
 const CheckList = ({books, genres, handleAddGenre,deleteBook,handleChangeEdit,handleDeleteGenre }) => (
-
   <section>
     <ul>
       {books.map(function (book) {

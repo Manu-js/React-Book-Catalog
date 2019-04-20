@@ -1,12 +1,11 @@
-import React from 'react';
+import React from "react";
+import Menuoption from "../Menuoption";
+import Logo from "../Logo/Index";
 import "./Header.css";
-import Menuoption from '../Menuoption';
-import Logo from "../Logo/Index"
 
 const Header = () => (
-
   <header className="appHeader">
-    <Logo></Logo>
+    <Logo />
     <Menuoption url="/" characters="Books" />
     <Menuoption url="/config" characters="Configuration" />
   </header>

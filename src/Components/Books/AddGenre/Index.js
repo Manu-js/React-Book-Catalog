@@ -1,39 +1,31 @@
 import React, { Component } from "react";
-
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
 import "./AddGenre.css";
 
 class AddGenre extends Component {
   state = {
     visibleView: false
-
   };
+
   constructor(props) {
     super(props);
-
     this.handleAddGenre = this.handleAddGenre.bind(this);
     this.showNewGenre = this.showNewGenre.bind(this);
   }
 
   handleAddGenre(event) {
     const { handleAddGenre, selectBook } = this.props;
-
     if (event.key === "Enter") {
       if (this.isGenreExist(event.target.value) === -1) {
-
         event.preventDefault();
         event.stopPropagation();
-
-        handleAddGenre(
-          event.target.value,
-          selectBook.id
-        );
+        handleAddGenre(event.target.value, selectBook.id);
       }
       this.hideNewGenre();
-
     }
   }
+
   isGenreExist(inputGenre) {
     const { selectBook } = this.props;
     return selectBook.genres.indexOf(inputGenre);
@@ -42,10 +34,10 @@ class AddGenre extends Component {
   showNewGenre() {
     this.setState({ visibleView: true });
   }
+
   hideNewGenre() {
     this.setState({ visibleView: false });
   }
-
 
   render() {
     return (
@@ -60,13 +52,19 @@ class AddGenre extends Component {
               margin="normal"
             />
           ) : (
-              <Button variant="outlined" color="primary" onClick={this.showNewGenre}> + </Button>
-            )}
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={this.showNewGenre}
+            >
+              {" "}
+              +{" "}
+            </Button>
+          )}
         </li>
       </ul>
     );
   }
 }
-
 
 export default AddGenre;

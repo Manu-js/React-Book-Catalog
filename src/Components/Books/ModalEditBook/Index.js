@@ -14,7 +14,6 @@ import "./ModalEditBook.css";
 class ModalEditBook extends Component {
   constructor(props) {
     super(props);
-
     this.onBookUpdate = this.onBookUpdate.bind(this);
     this.deleteThisBook = this.deleteThisBook.bind(this);
   }
@@ -22,7 +21,6 @@ class ModalEditBook extends Component {
     open: false,
     visibleView: false
   };
-
   deleteThisBook() {
     const { deleteBook, bookSelected } = this.props;
     deleteBook(bookSelected.id);
@@ -56,7 +54,6 @@ class ModalEditBook extends Component {
         <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
           <EditIcon />
         </Button>
-
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
@@ -130,4 +127,5 @@ class ModalEditBook extends Component {
     );
   }
 }
+
 export default ModalEditBook;

@@ -1,13 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Menuoption.css";
-import { Link } from 'react-router-dom';
 
 const Menuoption = ({ characters, url }) => {
-    return (
-        <Link to={url} className="menuItem">
-            {characters}
-        </Link>
-    );
-}
+  return (
+    <Link to={url} className="menuItem">
+      {characters}
+    </Link>
+  );
+};
 
 export default Menuoption;
