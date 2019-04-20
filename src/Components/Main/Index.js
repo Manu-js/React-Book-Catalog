@@ -4,7 +4,9 @@ import BooksView from "../Books/BooksView/Index";
 import Option from "../Config/Option/Index";
 import { Switch, Route } from 'react-router-dom';
 
-const Main = ({books, genres,
+const Main = ({
+  books,
+  genres,
   newBookData,
   genresFiltered,
   deleteBook,
@@ -14,16 +16,17 @@ const Main = ({books, genres,
   handleAddGenre,
   handleSelectGenre,
   deleteAllBook,
-  addNewBookParam,isLoaded}) => (
+  addNewBookParam,
+  isLoaded }) => (
 
-      <main className="app__main">
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => {
-              return (
-                <BooksView
+    <main className="app__main">
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={() => {
+            return (
+              <BooksView
                 genresFiltered={genresFiltered}
                 books={books}
                 genres={genres}
@@ -34,26 +37,24 @@ const Main = ({books, genres,
                 handleSelectGenre={handleSelectGenre}
                 handleNewBook={handleNewBook}
                 addNewBookParam={addNewBookParam}
-                newBookData={newBookData}
                 isLoaded={isLoaded}
-                />
-              )
-            }}
-          />
-          <Route
-            path="/config"
-            render={() => {
-              return (
-                <Option
-                 deleteAllBook={deleteAllBook}>
-                </Option>
-                )
-            }}
-          />
-        </Switch>
-
-      </main>
-    );
+              />
+            )
+          }}
+        />
+        <Route
+          path="/config"
+          render={() => {
+            return (
+              <Option
+                deleteAllBook={deleteAllBook}>
+              </Option>
+            )
+          }}
+        />
+      </Switch>
+    </main>
+  );
 
 
 

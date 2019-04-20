@@ -1,12 +1,9 @@
 import React, { Component } from "react";
-
+import CloseIcon from '@material-ui/icons/Close';
 import "./GenreList.css";
 
 class GenreList extends Component {
-  state = {
-    visibleView: false
 
-  };
   constructor(props) {
     super(props);
 
@@ -15,7 +12,7 @@ class GenreList extends Component {
 
   handleDeleteGenre(e) {
     const { handleDeleteGenre, selectBook } = this.props;
-    var arrayAux = [];
+    let arrayAux = [];
     selectBook.genres.map((genre, index) => {
       if (genre !== e.target.id) {
         arrayAux.push(genre);
@@ -25,24 +22,30 @@ class GenreList extends Component {
     handleDeleteGenre(selectBook.id, arrayAux);
   }
   render() {
-    const { selectBook,editOption } = this.props;
+
+    const { selectBook, editOption } = this.props;
     return (
       <ul className="genreListWrap">
+      <span>Genres list: </span>
         {selectBook.genres.map(item => (
           editOption === true ? (
-          <li
-            onClick={this.handleDeleteGenre}
-            id={item}
-            key={item}
-            className="genreList">{item}
-          </li>
-          ):(
             <li
-            id={item}
-            key={item}
-            className="genreList">{item}
-          </li>
-          )
+              id={item}
+              key={item}
+              value={item}
+              className="genreList">
+              {item} 
+              <CloseIcon id={item} style={{ fontSize: 15 }} className="closeButton" onClick={this.handleDeleteGenre} />
+            </li>
+          ) : (
+              <li
+                id={item}
+                key={item}
+                value={item}
+
+                className="genreList">{item}
+              </li>
+            )
         ))}
       </ul>
     );

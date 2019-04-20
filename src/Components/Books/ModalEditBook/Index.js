@@ -97,7 +97,6 @@ class ModalEditBook extends Component {
               handleDeleteGenre={handleDeleteGenre}
               handleAddGenre={handleAddGenre}
               editOption={true}
-
             />
             <AddGenre 
               handleAddGenre={handleAddGenre}

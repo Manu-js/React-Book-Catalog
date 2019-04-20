@@ -14,7 +14,7 @@ const Book = ({book, handleChangeEdit, deleteBook, handleDeleteGenre, handleAddG
           </Grid>
           <Grid item xs={10} className="bookRightContainer">
 
-            <h1 className="bookTittle">{book.tittle}</h1>
+            <h1 className="bookTittle">{book.price}€ - {book.tittle}</h1>
             <p className="bookResume">{book.resume}</p>
             <GenreList
               selectBook={book}

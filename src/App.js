@@ -14,13 +14,6 @@ class App extends Component {
       books: booksJson,
       genres: [],
       genresFiltered: [],
-      newBookData: {
-        tittle: '',
-        resume: '',
-        price: '',
-        genres: [''],
-        image: ''
-      },
       isLoaded: false
     };
 
@@ -118,7 +111,6 @@ class App extends Component {
     this.setState(prevState => {
       const newState = {
         books: prevState.books.map((book, index) => {
-
           if (book.id === bookSelected.id) {
             book = {
               ...book,
@@ -130,7 +122,6 @@ class App extends Component {
       }
       return newState;
     })
-
   }
 
   handleAddGenre(genre, idBook) {
@@ -159,24 +150,16 @@ class App extends Component {
 
   }
   
-  handleNewBook(newTittle, newResume, newPrice, newGenres) {
-    
-    const newId = (this.state.books[this.state.books.length -1].id) + 1;
-    
+  handleNewBook(newBook) {
+        
+    console.log(newBook)
     let newGenreArray = this.state.genres;
-    newGenres.map((genre) => {
+    newBook.genres.map((genre) => {
       if (this.isGenreExist(genre) === -1){
         newGenreArray.push(genre);
       }
     })
-    const newBook = {
-      "tittle": newTittle,
-      "resume": newResume,
-      "price": newPrice,
-      "genres": newGenres,
-      "image": "http://hp-api.herokuapp.com/images/harry.jpg",
-      "id": newId, // corregir esto. Esto hace que puedas tener dos ID. Necesito coger la ultima id y sumar una mas
-    };
+    newBook.id =  this.state.books.length !== 0 ? ((this.state.books[this.state.books.length -1].id) + 1) : ( 0 )
     this.setState(prevState => ({
       books: [...prevState.books, newBook],
       genres: newGenreArray,

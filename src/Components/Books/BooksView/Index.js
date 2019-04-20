@@ -25,7 +25,6 @@ const Booklist = ({ isLoaded ,books, newBookData, addNewBookParam, genresFiltere
     <ModalNewBook
       handleNewBook={handleNewBook}
       addNewBookParam={addNewBookParam}
-      newBookData={newBookData}
       handleDeleteGenre={handleDeleteGenre} />
       </div>
     ) : (

@@ -2,11 +2,12 @@ import React, { Component } from "react";
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import "./AddGenre.css";
 
 class AddGenre extends Component {
   state = {
     visibleView: false
-    
+
   };
   constructor(props) {
     super(props);
@@ -17,27 +18,27 @@ class AddGenre extends Component {
 
   handleAddGenre(event) {
     const { handleAddGenre, selectBook } = this.props;
-    
+
     if (event.key === "Enter") {
-      if( this.isGenreExist(event.target.value) === -1){
+      if (this.isGenreExist(event.target.value) === -1) {
 
-      event.preventDefault();
-      event.stopPropagation();
+        event.preventDefault();
+        event.stopPropagation();
 
-      handleAddGenre(
-        event.target.value,
-        selectBook.id
-      );
-      } 
+        handleAddGenre(
+          event.target.value,
+          selectBook.id
+        );
+      }
       this.hideNewGenre();
 
     }
   }
-  isGenreExist(inputGenre){
+  isGenreExist(inputGenre) {
     const { selectBook } = this.props;
     return selectBook.genres.indexOf(inputGenre);
   }
-  
+
   showNewGenre() {
     this.setState({ visibleView: true });
   }
@@ -48,7 +49,7 @@ class AddGenre extends Component {
 
   render() {
     return (
-      <ul>
+      <ul className="genreListWrap">
         <li className="genreAddList">
           {this.state.visibleView === true ? (
             <TextField
@@ -59,7 +60,7 @@ class AddGenre extends Component {
               margin="normal"
             />
           ) : (
-              <Button onClick={this.showNewGenre}> + </Button>
+              <Button variant="outlined" color="primary" onClick={this.showNewGenre}> + </Button>
             )}
         </li>
       </ul>

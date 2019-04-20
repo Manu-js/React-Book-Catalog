@@ -25,7 +25,7 @@ class DeleteAllBooks extends React.Component {
     this.handleClose();
 
   }
-  
+
   handleClickOpen = () => {
     this.setState({ open: true });
   };
@@ -41,7 +41,7 @@ class DeleteAllBooks extends React.Component {
       <div>
         <span>Delete all boks: </span>
         <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
-         <span>Delete</span> <EditIcon />
+          <span>Delete</span> <EditIcon />
         </Button>
 
         <Dialog
@@ -52,19 +52,25 @@ class DeleteAllBooks extends React.Component {
           <DialogTitle id="form-dialog-title">Delete all books</DialogTitle>
           <DialogContent>
             <DialogContentText>
-            Your books will be permanently deleted. You won't be able to retrieve anything you've added.
+              Your books will be permanently deleted. You won't be able to retrieve anything you've added.
             </DialogContentText>
 
           </DialogContent>
           <DialogActions>
-            <Button variant="contained"
-              color="secondary"
+
+            <Button
+              onClick={this.deleteAllBook}
+              variant="contained"
+              color="secondary">
+              Delete
+            </Button>
+
+            <Button
+              variant="contained"
+              color="primary"
               onClick={this.handleClose}
             >
               Cancel
-            </Button>
-            <Button onClick={this.deleteAllBook} color="primary">
-              Delete
             </Button>
           </DialogActions>
         </Dialog>
