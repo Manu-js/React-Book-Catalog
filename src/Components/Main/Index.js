@@ -15,7 +15,6 @@ const Main = ({
   handleAddGenre,
   handleSelectGenre,
   deleteAllBook,
-  addNewBookParam,
   isLoaded }) => (
     <main className="app__main">
       <Switch>
@@ -34,7 +33,6 @@ const Main = ({
                 handleDeleteGenre={handleDeleteGenre}
                 handleSelectGenre={handleSelectGenre}
                 handleNewBook={handleNewBook}
-                addNewBookParam={addNewBookParam}
                 isLoaded={isLoaded}
               />
             )

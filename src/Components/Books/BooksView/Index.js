@@ -5,7 +5,7 @@ import BookList from '../BookList/Index';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import "./BooksView.css";
 
-const Booklist = ({ isLoaded, books, addNewBookParam, genresFiltered, handleNewBook, genres, handleSelectGenre, deleteBook, handleChangeEdit, handleDeleteGenre, handleAddGenre }) => (
+const Booklist = ({ isLoaded, books, genresFiltered, handleNewBook, genres, handleSelectGenre, deleteBook, handleChangeEdit, handleDeleteGenre, handleAddGenre }) => (
   <section>
     {isLoaded === true ? (
       <div>
@@ -24,7 +24,6 @@ const Booklist = ({ isLoaded, books, addNewBookParam, genresFiltered, handleNewB
         />
         <ModalNewBook
           handleNewBook={handleNewBook}
-          addNewBookParam={addNewBookParam}
           handleDeleteGenre={handleDeleteGenre} />
       </div>
     ) : (

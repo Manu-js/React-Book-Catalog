@@ -20,18 +20,8 @@ class App extends Component {
     this.handleAddGenre = this.handleAddGenre.bind(this);
     this.handleSelectGenre = this.handleSelectGenre.bind(this);
     this.deleteAllBook = this.deleteAllBook.bind(this);
-    this.addNewBookParam = this.addNewBookParam.bind(this);
   }
-  addNewBookParam(name, value) {
-    let { newBookData } = this.state;
-    newBookData.tittle = value;
-    this.setState({
-      newBookData: (newBookData = {
-        ...newBookData,
-        [name]: value
-      })
-    });
-  }
+
   getGenres() {
     const auxArray = [];
     booksJson.map(item => {
@@ -120,7 +110,7 @@ class App extends Component {
     return genres.indexOf(inputGenre);
   }
   handleNewBook(newBook) {
-    console.log(this.state.books[this.state.books.length - 1].id);
+    console.log(newBook);
     let newGenreArray = this.state.genres;
     newBook.genres.map(genre => {
       if (this.isGenreExist(genre) === -1) {
@@ -133,7 +123,7 @@ class App extends Component {
         ? this.state.books[this.state.books.length - 1].id + 1
         : 0;
     this.setState(prevState => ({
-      books: [...prevState.books, newBook],
+      books: prevState.books.concat(newBook),
       genres: newGenreArray
     }));
   }
@@ -193,7 +183,6 @@ class App extends Component {
           handleDeleteGenre={this.handleDeleteGenre}
           handleNewBook={this.handleNewBook}
           deleteAllBook={this.deleteAllBook}
-          addNewBookParam={this.addNewBookParam}
           isLoaded={isLoaded}
         />
       </div>
