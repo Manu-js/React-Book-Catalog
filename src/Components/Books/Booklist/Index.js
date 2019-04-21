@@ -2,7 +2,12 @@ import React from "react";
 import Book from '../Book/Index'
 import "./BookList.css";
 
-const CheckList = ({books, genres, handleAddGenre,handleDeleteBook,handleChangeEdit,handleDeleteGenre }) => (
+const CheckList = ({books, 
+  genres, 
+  handleAddGenre,
+  handleDeleteBook,
+  handleModifyBook,
+  handleDeleteGenre }) => (
   <section>
     <ul>
       {books.map(function (book) {
@@ -11,7 +16,7 @@ const CheckList = ({books, genres, handleAddGenre,handleDeleteBook,handleChangeE
           book={book}
           handleAddGenre={handleAddGenre}
           handleDeleteBook={handleDeleteBook}
-          handleChangeEdit={handleChangeEdit}
+          handleModifyBook={handleModifyBook}
           handleDeleteGenre={handleDeleteGenre}
           genres={genres}
         />

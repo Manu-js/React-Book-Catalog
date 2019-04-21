@@ -27,8 +27,8 @@ class ModalEditBook extends Component {
   }
 
   onBookUpdate(e) {
-    const { bookSelected, handleChangeEdit } = this.props;
-    handleChangeEdit(e.currentTarget.name, bookSelected, e.currentTarget.value);
+    const { bookSelected, handleModifyBook } = this.props;
+    handleModifyBook(e.currentTarget.name, bookSelected, e.currentTarget.value);
   }
 
   handleClickOpen = () => {

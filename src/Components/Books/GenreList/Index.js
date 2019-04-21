@@ -22,7 +22,7 @@ class GenreList extends Component {
     const { selectBook, editOption } = this.props;
     return (
       <div className="genreListWrap">
-        <span className="listGenreTittle">Genres list: </span>
+        <span className="listGenreTittle">List of genres: </span>
         <ul className="genreList">
           {selectBook.genres.map(item => (
             editOption === true ? (

@@ -9,7 +9,7 @@ const Main = ({
   genres,
   genresFiltered,
   handleDeleteBook,
-  handleChangeEdit,
+  handleModifyBook,
   handleNewBook,
   handleDeleteGenre,
   handleAddGenre,
@@ -29,7 +29,7 @@ const Main = ({
                 genres={genres}
                 handleAddGenre={handleAddGenre}
                 handleDeleteBook={handleDeleteBook}
-                handleChangeEdit={handleChangeEdit}
+                handleModifyBook={handleModifyBook}
                 handleDeleteGenre={handleDeleteGenre}
                 handleSelectGenre={handleSelectGenre}
                 handleNewBook={handleNewBook}

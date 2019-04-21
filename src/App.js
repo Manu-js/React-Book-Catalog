@@ -14,7 +14,7 @@ class App extends Component {
       isLoaded: false
     };
     this.handleDeleteBook = this.handleDeleteBook.bind(this);
-    this.handleChangeEdit = this.handleChangeEdit.bind(this);
+    this.handleModifyBook = this.handleModifyBook.bind(this);
     this.handleNewBook = this.handleNewBook.bind(this);
     this.handleDeleteGenre = this.handleDeleteGenre.bind(this);
     this.handleAddGenre = this.handleAddGenre.bind(this);
@@ -87,7 +87,7 @@ class App extends Component {
     this.setState({ books: [] });
   }
 
-  handleChangeEdit(name, bookSelected, value) {
+  handleModifyBook(name, bookSelected, value) {
     this.setState(prevState => {
       const newState = {
         books: prevState.books.map((book, index) => {
@@ -174,7 +174,7 @@ class App extends Component {
   }
 
   render() {
-    const { genres, genresFiltered, newBookData, isLoaded } = this.state;
+    const { genres, genresFiltered, isLoaded } = this.state;
     return (
       <div className="App">
         <Header />
@@ -182,11 +182,10 @@ class App extends Component {
           books={this.getBookList()}
           genres={genres}
           genresFiltered={genresFiltered}
-          newBookData={newBookData}
           handleSelectGenre={this.handleSelectGenre}
           handleAddGenre={this.handleAddGenre}
           handleDeleteBook={this.handleDeleteBook}
-          handleChangeEdit={this.handleChangeEdit}
+          handleModifyBook={this.handleModifyBook}
           handleDeleteGenre={this.handleDeleteGenre}
           handleNewBook={this.handleNewBook}
           handleDeleteAllBook={this.handleDeleteAllBook}

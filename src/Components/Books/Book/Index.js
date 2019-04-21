@@ -4,7 +4,7 @@ import GenreList from "../GenreList/Index";
 import Grid from '@material-ui/core/Grid';
 import "./Book.css";
 
-const Book = ({book, handleChangeEdit, handleDeleteBook, handleDeleteGenre, handleAddGenre, genres}) => (
+const Book = ({book, handleModifyBook, handleDeleteBook, handleDeleteGenre, handleAddGenre, genres}) => (
   <li key={book.id} className="bookCard">
         <Grid container spacing={24}>
           <Grid item xs={12} className="bookRightContainer">
@@ -19,7 +19,7 @@ const Book = ({book, handleChangeEdit, handleDeleteBook, handleDeleteGenre, hand
               handleDeleteBook={handleDeleteBook}
               bookSelected={book}
               handleAddGenre={handleAddGenre}
-              handleChangeEdit={handleChangeEdit}
+              handleModifyBook={handleModifyBook}
               handleDeleteGenre={handleDeleteGenre}
               genres={genres}>
             </ModalEditBook>
