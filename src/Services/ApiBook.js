@@ -13,7 +13,7 @@ const booksJson = [
   },
   {
     "tittle": "The Hitchhiker's Guide to the Galaxy",
-    "genres": ["The true", "number 42"],
+    "genres": ["The true", "Number 42"],
     "id": 2,
     "price": "42"
   },
