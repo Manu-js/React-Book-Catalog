@@ -22,8 +22,8 @@ class ModalEditBook extends Component {
     visibleView: false
   };
   deleteThisBook() {
-    const { deleteBook, bookSelected } = this.props;
-    deleteBook(bookSelected.id);
+    const { handleDeleteBook, bookSelected } = this.props;
+    handleDeleteBook(bookSelected.id);
   }
 
   onBookUpdate(e) {

@@ -13,13 +13,13 @@ class App extends Component {
       genresFiltered: [],
       isLoaded: false
     };
-    this.deleteBook = this.deleteBook.bind(this);
+    this.handleDeleteBook = this.handleDeleteBook.bind(this);
     this.handleChangeEdit = this.handleChangeEdit.bind(this);
     this.handleNewBook = this.handleNewBook.bind(this);
     this.handleDeleteGenre = this.handleDeleteGenre.bind(this);
     this.handleAddGenre = this.handleAddGenre.bind(this);
     this.handleSelectGenre = this.handleSelectGenre.bind(this);
-    this.deleteAllBook = this.deleteAllBook.bind(this);
+    this.handleDeleteAllBook = this.handleDeleteAllBook.bind(this);
   }
   componentDidMount() {
     this.getGenres();
@@ -50,6 +50,7 @@ class App extends Component {
       genres: auxArray
     }));
   }
+
   handleSelectGenre(e) {
     const { checked, value } = e;
     let auxArray = this.state.genresFiltered;
@@ -65,6 +66,7 @@ class App extends Component {
       genresFiltered: auxArray
     }));
   }
+
   getBookList() {
     const { books, genresFiltered } = this.state;
     let auxVar = [];
@@ -80,9 +82,11 @@ class App extends Component {
       return books;
     }
   }
-  deleteAllBook() {
+
+  handleDeleteAllBook() {
     this.setState({ books: [] });
   }
+
   handleChangeEdit(name, bookSelected, value) {
     this.setState(prevState => {
       const newState = {
@@ -99,6 +103,7 @@ class App extends Component {
       return newState;
     });
   }
+
   handleAddGenre(genre, idBook) {
     this.setState(prevState => {
       const newState = {
@@ -119,6 +124,7 @@ class App extends Component {
       return newState;
     });
   }
+
   isGenreExist(inputGenre) {
     const genres = this.state.genres;
     return genres.indexOf(inputGenre);
@@ -140,6 +146,7 @@ class App extends Component {
       genres: newGenreArray
     }));
   }
+
   handleDeleteGenre(idBook, genre) {
     this.setState(prevState => {
       const newState = {
@@ -156,7 +163,8 @@ class App extends Component {
       return newState;
     });
   }
-  deleteBook(idBook) {
+
+  handleDeleteBook(idBook) {
     this.setState(prevState => {
       const newState = {
         books: prevState.books.filter(book => book.id !== parseInt(idBook))
@@ -177,11 +185,11 @@ class App extends Component {
           newBookData={newBookData}
           handleSelectGenre={this.handleSelectGenre}
           handleAddGenre={this.handleAddGenre}
-          deleteBook={this.deleteBook}
+          handleDeleteBook={this.handleDeleteBook}
           handleChangeEdit={this.handleChangeEdit}
           handleDeleteGenre={this.handleDeleteGenre}
           handleNewBook={this.handleNewBook}
-          deleteAllBook={this.deleteAllBook}
+          handleDeleteAllBook={this.handleDeleteAllBook}
           isLoaded={isLoaded}
         />
       </div>

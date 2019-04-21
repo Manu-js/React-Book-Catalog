@@ -1,8 +1,8 @@
 import React from "react";
 import GenreCheck from '../GenreCheck/Index';
-import "./CheckList.css";
+import "./CheckGenreList.css";
 
-const CheckList = ({ genresFiltered, genres, handleSelectGenre }) => (
+const CheckGenreList = ({ genresFiltered, genres, handleSelectGenre }) => (
   <section>
     <ul >
       {genres.map(function (genre) {
@@ -21,4 +21,4 @@ const CheckList = ({ genresFiltered, genres, handleSelectGenre }) => (
   </section>
 );
 
-export default CheckList;
+export default CheckGenreList;

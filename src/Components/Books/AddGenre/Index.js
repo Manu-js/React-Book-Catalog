@@ -5,7 +5,7 @@ import "./AddGenre.css";
 
 class AddGenre extends Component {
   state = {
-    visibleView: false
+    visibleAddGenre: false
   };
 
   constructor(props) {
@@ -32,18 +32,18 @@ class AddGenre extends Component {
   }
 
   showNewGenre() {
-    this.setState({ visibleView: true });
+    this.setState({ visibleAddGenre: true });
   }
 
   hideNewGenre() {
-    this.setState({ visibleView: false });
+    this.setState({ visibleAddGenre: false });
   }
 
   render() {
     return (
       <ul className="genreListWrap">
         <li className="genreAddList">
-          {this.state.visibleView === true ? (
+          {this.state.visibleAddGenre === true ? (
             <TextField
               id="newGenre"
               label="New genre"

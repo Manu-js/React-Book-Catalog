@@ -10,15 +10,15 @@ import EditIcon from '@material-ui/icons/Edit';
 class DeleteAllBooks extends React.Component {
   constructor(props) {
     super(props);
-    this.deleteAllBook = this.deleteAllBook.bind(this);
+    this.handleDeleteAllBook = this.handleDeleteAllBook.bind(this);
   }
   state = {
     open: false,
     visibleView: false
   };
-  deleteAllBook() {
-    const { deleteAllBook } = this.props;
-    deleteAllBook();
+  handleDeleteAllBook() {
+    const { handleDeleteAllBook } = this.props;
+    handleDeleteAllBook();
     this.handleClose();
   }
   handleClickOpen = () => {
@@ -47,7 +47,7 @@ class DeleteAllBooks extends React.Component {
           </DialogContent>
           <DialogActions>
             <Button
-              onClick={this.deleteAllBook}
+              onClick={this.handleDeleteAllBook}
               variant="contained"
               color="secondary">
               Delete

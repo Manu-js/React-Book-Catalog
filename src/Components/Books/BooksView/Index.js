@@ -1,15 +1,15 @@
 import React from "react";
 import ModalNewBook from '../ModalNewBook/Index';
-import CheckList from '../CheckList/Index';
+import CheckGenreList from '../CheckGenreList/Index';
 import BookList from '../BookList/Index';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import "./BooksView.css";
 
-const Booklist = ({ isLoaded, books, genresFiltered, handleNewBook, genres, handleSelectGenre, deleteBook, handleChangeEdit, handleDeleteGenre, handleAddGenre }) => (
+const Booklist = ({ isLoaded, books, genresFiltered, handleNewBook, genres, handleSelectGenre, handleDeleteBook, handleChangeEdit, handleDeleteGenre, handleAddGenre }) => (
   <section>
     {isLoaded === true ? (
       <div>
-        <CheckList
+        <CheckGenreList
           genresFiltered={genresFiltered}
           genres={genres}
           handleSelectGenre={handleSelectGenre}
@@ -17,7 +17,7 @@ const Booklist = ({ isLoaded, books, genresFiltered, handleNewBook, genres, hand
         <BookList
           books={books}
           handleAddGenre={handleAddGenre}
-          deleteBook={deleteBook}
+          handleDeleteBook={handleDeleteBook}
           handleChangeEdit={handleChangeEdit}
           handleDeleteGenre={handleDeleteGenre}
           genres={genres} 

@@ -1,6 +1,6 @@
 import React from "react";
 import BooksView from "../Books/BooksView/Index";
-import Option from "../Config/Option/Index";
+import ConfigOption from "../Config/ConfigOption/Index";
 import { Switch, Route } from 'react-router-dom';
 import "./Main.css";
 
@@ -8,13 +8,13 @@ const Main = ({
   books,
   genres,
   genresFiltered,
-  deleteBook,
+  handleDeleteBook,
   handleChangeEdit,
   handleNewBook,
   handleDeleteGenre,
   handleAddGenre,
   handleSelectGenre,
-  deleteAllBook,
+  handleDeleteAllBook,
   isLoaded }) => (
     <main className="app__main">
       <Switch>
@@ -28,7 +28,7 @@ const Main = ({
                 books={books}
                 genres={genres}
                 handleAddGenre={handleAddGenre}
-                deleteBook={deleteBook}
+                handleDeleteBook={handleDeleteBook}
                 handleChangeEdit={handleChangeEdit}
                 handleDeleteGenre={handleDeleteGenre}
                 handleSelectGenre={handleSelectGenre}
@@ -42,9 +42,9 @@ const Main = ({
           path="/config"
           render={() => {
             return (
-              <Option
-                deleteAllBook={deleteAllBook}>
-              </Option>
+              <ConfigOption
+              handleDeleteAllBook={handleDeleteAllBook}>
+              </ConfigOption>
             )
           }}
         />
