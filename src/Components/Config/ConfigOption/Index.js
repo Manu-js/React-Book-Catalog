@@ -8,8 +8,8 @@ const Option = ({ handleDeleteAllBook }) => (
   <Grid container>
     <Grid item xs={12}>
       <DeleteAllBooks handleDeleteAllBook={handleDeleteAllBook}></DeleteAllBooks>
-      <Button className="buttonLink" variant="contained" href={"https://www.w3schools.com"}>My Linkedin</Button>
-      <Button className="buttonLink" variant="contained" href={"https://www.linkedin.com/in/manuelsc/"}>My GitHub</Button>
+      <Button className="buttonLink" variant="contained" href={"https://www.linkedin.com/in/manuelsc/"}>My Linkedin</Button>
+      <Button className="buttonLink" variant="contained" href={"https://github.com/ManuQuery/React-Book-Catalog"}>My GitHub</Button>
     </Grid>
   </Grid>
 );

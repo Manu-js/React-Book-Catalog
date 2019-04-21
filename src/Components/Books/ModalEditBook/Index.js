@@ -79,16 +79,6 @@ class ModalEditBook extends Component {
               margin="normal"
               fullWidth
             />
-            <TextField
-              id="resume"
-              label="Resume"
-              name="resume"
-              value={bookSelected.resume}
-              onChange={this.onBookUpdate}
-              margin="normal"
-              fullWidth
-            />
-
             <GenreList
               selectBook={bookSelected}
               handleDeleteGenre={handleDeleteGenre}

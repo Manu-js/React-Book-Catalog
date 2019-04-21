@@ -6,8 +6,9 @@
     padding: 20px;
     width: 90%;
     height: 243px;
-    border-left: 5px solid white;
+    border-left: 5px solid #FF4F19;
     background-color: #717171;
+    max-width: 1400px;
 }
 .imgBook{
     max-height: 200px;   
@@ -25,12 +26,13 @@
     font-size: 22px;
     text-align: left;
 }
-.bookResume{
+.bookPrice{
     text-align: justify;
     height: 70px;
     text-overflow: ellipsis;
     overflow: hidden;
-    line-height: 1.4
+    line-height: 1.4;
+    font-size:22px;
 }
 
 .bookRightContainer{

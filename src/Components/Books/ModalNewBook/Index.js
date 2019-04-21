@@ -22,7 +22,6 @@ class ModalNewBook extends Component {
     genresValue: [],
     newBookData: {
       tittle: '',
-      resume: '',
       price: '',
       genres: [],
     },
@@ -107,15 +106,7 @@ class ModalNewBook extends Component {
               margin="normal"
               fullWidth
             />
-            <TextField
-              id="resume"
-              label="Resume"
-              name="resume"
-              value={this.state.newBookData.resume}
-              onChange={evt => this.updateInputValue(evt)}
-              margin="normal"
-              fullWidth
-            />
+
             <GenreList
               selectBook={this.state.newBookData}
               handleAddGenre={this.handleAddNewGenre}

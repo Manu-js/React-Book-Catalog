@@ -32,7 +32,7 @@ class DeleteAllBooks extends React.Component {
     return (
       <div className="deleteAllWrap">
         <span>Delete all boks: </span>
-        <Button variant="contained" color="secundary" onClick={this.handleClickOpen}>
+        <Button variant="contained" color="secondary" onClick={this.handleClickOpen}>
           <span>Delete</span> <DeleteIcon />
         </Button>
         <Dialog

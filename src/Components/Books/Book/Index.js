@@ -8,8 +8,8 @@ const Book = ({book, handleModifyBook, handleDeleteBook, handleDeleteGenre, hand
   <li key={book.id} className="bookCard">
         <Grid container spacing={24}>
           <Grid item xs={12} className="bookRightContainer">
-            <h1 className="bookTittle">{book.price}€ - {book.tittle}</h1>
-            <p className="bookResume">{book.resume}</p>
+            <h1 className="bookTittle">{book.tittle}</h1>
+            <h2 className="bookPrice">{book.price}€</h2>
             <GenreList
               selectBook={book}
               handleDeleteGenre={handleDeleteGenre}
