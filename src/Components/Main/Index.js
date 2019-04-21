@@ -16,7 +16,7 @@ const Main = ({
   handleSelectGenre,
   handleDeleteAllBook,
   isLoaded }) => (
-    <main className="app__main">
+    <main className="appMain">
       <Switch>
         <Route
           exact

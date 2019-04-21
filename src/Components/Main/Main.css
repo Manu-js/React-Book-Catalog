@@ -1,11 +1,4 @@
-.appMain {
-    min-height: 45vh;
-    flex-grow: 1;
-    flex-shrink: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+
   .texto1{
     color: blueviolet;
     display: inline-block;
