@@ -5,7 +5,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 import './DeleteAllBooks.css';
 
 class DeleteAllBooks extends React.Component {
@@ -32,8 +32,8 @@ class DeleteAllBooks extends React.Component {
     return (
       <div className="deleteAllWrap">
         <span>Delete all boks: </span>
-        <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
-          <span>Delete</span> <EditIcon />
+        <Button variant="contained" color="secundary" onClick={this.handleClickOpen}>
+          <span>Delete</span> <DeleteIcon />
         </Button>
         <Dialog
           open={this.state.open}
