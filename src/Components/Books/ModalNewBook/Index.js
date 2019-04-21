@@ -25,7 +25,6 @@ class ModalNewBook extends Component {
       resume: '',
       price: '',
       genres: [],
-      image: ''
     },
 
   };

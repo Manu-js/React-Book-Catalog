@@ -102,12 +102,7 @@ class ModalEditBook extends Component {
             />
           </DialogContent>
           <DialogActions>
-          <Button
-              variant="contained"
-              onClick={this.handleClose}
-              id={bookSelected.id}>
-              Cancel
-            </Button>
+
             <Button
               variant="contained"
               color="secondary"
@@ -119,7 +114,7 @@ class ModalEditBook extends Component {
               variant="contained"
               color="primary"
               onClick={this.handleClose}>
-              Update
+              Accept
             </Button>
           </DialogActions>
         </Dialog>

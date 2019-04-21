@@ -21,28 +21,30 @@ class GenreList extends Component {
   render() {
     const { selectBook, editOption } = this.props;
     return (
-      <ul className="genreListWrap">
-        <span>Genres list: </span>
-        {selectBook.genres.map(item => (
-          editOption === true ? (
-            <li
-              id={item}
-              key={item}
-              value={item}
-              className="genreList">
-              {item}
-              <CloseIcon id={item} style={{ fontSize: 15 }} className="closeButton" onClick={this.handleDeleteGenre} />
-            </li>
-          ) : (
+      <div className="genreListWrap">
+        <span className="listGenreTittle">Genres list: </span>
+        <ul className="genreList">
+          {selectBook.genres.map(item => (
+            editOption === true ? (
               <li
                 id={item}
                 key={item}
                 value={item}
-                className="genreList">{item}
+                className="genreListObject">
+                {item}
+                <CloseIcon id={item} style={{ fontSize: 15 }} className="closeButton" onClick={this.handleDeleteGenre} />
               </li>
-            )
-        ))}
-      </ul>
+            ) : (
+                <li
+                  id={item}
+                  key={item}
+                  value={item}
+                  className="genreListObject">{item}
+                </li>
+              )
+          ))}
+        </ul>
+      </div>
     );
   }
 }

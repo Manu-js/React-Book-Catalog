@@ -1,4 +1,4 @@
-.genreList {
+.genreListObject {
     background-color: #8d8d8d;
     padding: 5px;
     margin: 10px 0 0 10px;
@@ -25,8 +25,15 @@
 }
 
 .genreListWrap {
+    text-align: left;
+}
+.genreList {
     float: left;
     padding-left: 0px;
     margin-left: 0px;
     margin-top: 10px;
+}
+
+.listGenreTittle{
+    display: block;
 }

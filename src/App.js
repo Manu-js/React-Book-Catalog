@@ -21,6 +21,20 @@ class App extends Component {
     this.handleSelectGenre = this.handleSelectGenre.bind(this);
     this.deleteAllBook = this.deleteAllBook.bind(this);
   }
+  componentDidMount() {
+    this.getGenres();
+    setTimeout(
+      function () {
+        this.setState(prevState => {
+          const newState = {
+            isLoaded: true
+          };
+          return newState;
+        });
+      }.bind(this),
+      2000
+    );
+  }
 
   getGenres() {
     const auxArray = [];
@@ -110,7 +124,6 @@ class App extends Component {
     return genres.indexOf(inputGenre);
   }
   handleNewBook(newBook) {
-    console.log(newBook);
     let newGenreArray = this.state.genres;
     newBook.genres.map(genre => {
       if (this.isGenreExist(genre) === -1) {
@@ -151,21 +164,7 @@ class App extends Component {
       return newState;
     });
   }
-  componentDidMount() {
-    this.getGenres();
-    setTimeout(
-      function() {
-        //Start the timer
-        this.setState(prevState => {
-          const newState = {
-            isLoaded: true
-          };
-          return newState;
-        });
-      }.bind(this),
-      2000
-    );
-  }
+
   render() {
     const { genres, genresFiltered, newBookData, isLoaded } = this.state;
     return (

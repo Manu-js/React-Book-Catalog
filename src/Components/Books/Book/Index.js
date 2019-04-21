@@ -7,10 +7,7 @@ import "./Book.css";
 const Book = ({book, handleChangeEdit, deleteBook, handleDeleteGenre, handleAddGenre, genres}) => (
   <li key={book.id} className="bookCard">
         <Grid container spacing={24}>
-          <Grid item xs={2}>
-            <img className="imgBook" src={book.image} alt="Logo" />
-          </Grid>
-          <Grid item xs={10} className="bookRightContainer">
+          <Grid item xs={12} className="bookRightContainer">
             <h1 className="bookTittle">{book.price}€ - {book.tittle}</h1>
             <p className="bookResume">{book.resume}</p>
             <GenreList
