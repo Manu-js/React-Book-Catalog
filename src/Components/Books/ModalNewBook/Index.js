@@ -104,6 +104,7 @@ class ModalNewBook extends Component {
               fullWidth
             />
             <TextField
+              type="number"
               id="price"
               label="Price"
               name="price"

@@ -23,11 +23,11 @@ class App extends Component {
     this.handleDeleteAllBook = this.handleDeleteAllBook.bind(this);
     this.handleDeleteGlobalGenre = this.handleDeleteGlobalGenre.bind(this);
   }
-  
+
   componentDidMount() {
     this.getGenres();
     setTimeout(
-      function () {
+      function() {
         this.setState(prevState => {
           const newState = {
             isLoaded: true
@@ -133,7 +133,6 @@ class App extends Component {
       };
       return newState;
     });
-    
   }
 
   handleAddGenre(genre, idBook) {
@@ -161,6 +160,7 @@ class App extends Component {
     const genres = this.state.genres;
     return genres.indexOf(inputGenre);
   }
+  
   handleNewBook(newBook) {
     let newGenreArray = this.state.genres;
     newBook.genres.map(genre => {
@@ -195,35 +195,37 @@ class App extends Component {
       return newState;
     });
   }
-  handleDeleteGlobalGenre (genreToDelete) {
+
+  handleDeleteGlobalGenre(genreToDelete) {
     this.setState(prevState => {
       const newState = {
         books: prevState.books.map((book, index) => {
-            book = {
-              ...book,
-              genres: book.genres.filter(function(genre){
-                return genre !== genreToDelete
-              })           
-             };
-          
+          book = {
+            ...book,
+            genres: book.genres.filter(function(genre) {
+              return genre !== genreToDelete;
+            })
+          };
+
           return book;
         }),
-        genres: prevState.genres.filter(function(genre){
-          return genre !== genreToDelete
-        })       
+        genres: prevState.genres.filter(function(genre) {
+          return genre !== genreToDelete;
+        })
       };
       return newState;
     });
   }
-  handleDeleteAllGenre () {
+
+  handleDeleteAllGenre() {
     this.setState(prevState => {
       const newState = {
         books: prevState.books.map((book, index) => {
-            book = {
-              ...book,
-              genres: []         
-             };
-          
+          book = {
+            ...book,
+            genres: []
+          };
+
           return book;
         }),
         genres: []
@@ -250,6 +252,7 @@ class App extends Component {
           books={this.getBookList()}
           genres={genres}
           genresFiltered={genresFiltered}
+          isLoaded={isLoaded}
           handleSelectGenre={this.handleSelectGenre}
           handleDeleteAllGenre={this.handleDeleteAllGenre}
           handleAddGenre={this.handleAddGenre}
@@ -259,7 +262,6 @@ class App extends Component {
           handleNewBook={this.handleNewBook}
           handleDeleteAllBook={this.handleDeleteAllBook}
           handleDeleteGlobalGenre={this.handleDeleteGlobalGenre}
-          isLoaded={isLoaded}
         />
       </div>
     );

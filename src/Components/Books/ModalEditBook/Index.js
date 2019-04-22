@@ -2,13 +2,13 @@ import React, { Component } from "react";
 
 import GenreList from "../GenreList/Index";
 import AddGenre from "../AddGenre/Index";
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import EditIcon from '@material-ui/icons/Edit';
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import EditIcon from "@material-ui/icons/Edit";
 import "./ModalEditBook.css";
 
 class ModalEditBook extends Component {
@@ -23,16 +23,16 @@ class ModalEditBook extends Component {
     open: false,
     visibleView: false,
     newBookData: {
-      tittle: '',
-      price: '',
-      genres: [],
+      tittle: "",
+      price: "",
+      genres: []
     }
   };
 
   componentDidMount() {
     const { bookSelected } = this.props;
 
-        this.setState({newBookData:bookSelected});
+    this.setState({ newBookData: bookSelected });
   }
   deleteThisBook() {
     const { handleDeleteBook, bookSelected } = this.props;
@@ -43,7 +43,6 @@ class ModalEditBook extends Component {
     const { handleModifyBook } = this.props;
     handleModifyBook(this.state.newBookData);
     this.handleClose();
-
   }
   handleAddNewGenre(text) {
     this.setState(prevState => {
@@ -52,9 +51,9 @@ class ModalEditBook extends Component {
           ...prevState.newBookData,
           genres: prevState.newBookData.genres.concat(text)
         }
-      }
+      };
       return newState;
-    })
+    });
   }
 
   updateInputValue(e) {
@@ -74,9 +73,9 @@ class ModalEditBook extends Component {
           ...prevState.newBookData,
           genres: genre
         }
-      }
+      };
       return newState;
-    })
+    });
   }
 
   handleClickOpen = () => {
@@ -95,11 +94,15 @@ class ModalEditBook extends Component {
   }
 
   render() {
-    const { bookSelected} = this.props;
+    const { bookSelected } = this.props;
 
     return (
       <div className="editButton">
-        <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={this.handleClickOpen}
+        >
           <EditIcon />
         </Button>
         <Dialog
@@ -109,7 +112,7 @@ class ModalEditBook extends Component {
         >
           <DialogTitle id="form-dialog-title">Modify Book</DialogTitle>
           <DialogContent>
-          <TextField
+            <TextField
               id="tittle"
               label="Tittle"
               name="tittle"
@@ -119,6 +122,7 @@ class ModalEditBook extends Component {
               fullWidth
             />
             <TextField
+              type="number"
               id="price"
               label="Price"
               name="price"
@@ -141,18 +145,19 @@ class ModalEditBook extends Component {
             />
           </DialogContent>
           <DialogActions>
-
             <Button
               variant="contained"
               color="secondary"
               onClick={this.deleteThisBook}
-              id={bookSelected.id}>
+              id={bookSelected.id}
+            >
               Delete Book
             </Button>
             <Button
               variant="contained"
               color="primary"
-              onClick={this.onBookUpdate}>
+              onClick={this.onBookUpdate}
+            >
               Accept
             </Button>
           </DialogActions>

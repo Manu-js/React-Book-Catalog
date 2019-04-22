@@ -6,9 +6,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DeleteIcon from '@material-ui/icons/Delete';
-import './DeleteAll.css';
+import './DeleteAllOption.css';
 
-class DeleteAll extends React.Component {
+class DeleteAllOption extends React.Component {
   constructor(props) {
     super(props);
     this.handleDeleteAllBook = this.handleDeleteAllBook.bind(this);
@@ -68,4 +68,4 @@ class DeleteAll extends React.Component {
   }
 }
 
-export default DeleteAll;
+export default DeleteAllOption;
