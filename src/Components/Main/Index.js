@@ -14,7 +14,9 @@ const Main = ({
   handleDeleteGenre,
   handleAddGenre,
   handleSelectGenre,
+  handleDeleteAllGenre,
   handleDeleteAllBook,
+  handleDeleteGlobalGenre,
   isLoaded }) => (
     <main className="appMain">
       <Switch>
@@ -43,7 +45,10 @@ const Main = ({
           render={() => {
             return (
               <ConfigOption
-              handleDeleteAllBook={handleDeleteAllBook}>
+              handleDeleteAllBook={handleDeleteAllBook}
+              handleDeleteGlobalGenre = {handleDeleteGlobalGenre}
+              handleDeleteAllGenre = {handleDeleteAllGenre}
+              genres = {genres}>
               </ConfigOption>
             )
           }}

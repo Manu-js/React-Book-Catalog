@@ -19,8 +19,11 @@ class App extends Component {
     this.handleDeleteGenre = this.handleDeleteGenre.bind(this);
     this.handleAddGenre = this.handleAddGenre.bind(this);
     this.handleSelectGenre = this.handleSelectGenre.bind(this);
+    this.handleDeleteAllGenre = this.handleDeleteAllGenre.bind(this);
     this.handleDeleteAllBook = this.handleDeleteAllBook.bind(this);
+    this.handleDeleteGlobalGenre = this.handleDeleteGlobalGenre.bind(this);
   }
+  
   componentDidMount() {
     this.getGenres();
     setTimeout(
@@ -87,7 +90,7 @@ class App extends Component {
     this.setState({ books: [] });
   }
 
-  handleModifyBook(name, bookSelected, value) {
+  handleModifyBook1(name, bookSelected, value) {
     this.setState(prevState => {
       const newState = {
         books: prevState.books.map((book, index) => {
@@ -102,6 +105,35 @@ class App extends Component {
       };
       return newState;
     });
+  }
+
+  handleModifyBook(newBook) {
+    let newGenreArray = this.state.genres;
+    newBook.genres.map(genre => {
+      if (this.isGenreExist(genre) === -1) {
+        newGenreArray.push(genre);
+      }
+      return genre;
+    });
+
+    this.setState(prevState => {
+      const newState = {
+        books: prevState.books.map((book, index) => {
+          if (book.id === newBook.id) {
+            book = {
+              id: newBook.id,
+              genres: newBook.genres,
+              price: newBook.price,
+              tittle: newBook.tittle
+            };
+          }
+          return book;
+        }),
+        genres: newGenreArray
+      };
+      return newState;
+    });
+    
   }
 
   handleAddGenre(genre, idBook) {
@@ -163,6 +195,42 @@ class App extends Component {
       return newState;
     });
   }
+  handleDeleteGlobalGenre (genreToDelete) {
+    this.setState(prevState => {
+      const newState = {
+        books: prevState.books.map((book, index) => {
+            book = {
+              ...book,
+              genres: book.genres.filter(function(genre){
+                return genre !== genreToDelete
+              })           
+             };
+          
+          return book;
+        }),
+        genres: prevState.genres.filter(function(genre){
+          return genre !== genreToDelete
+        })       
+      };
+      return newState;
+    });
+  }
+  handleDeleteAllGenre () {
+    this.setState(prevState => {
+      const newState = {
+        books: prevState.books.map((book, index) => {
+            book = {
+              ...book,
+              genres: []         
+             };
+          
+          return book;
+        }),
+        genres: []
+      };
+      return newState;
+    });
+  }
 
   handleDeleteBook(idBook) {
     this.setState(prevState => {
@@ -183,12 +251,14 @@ class App extends Component {
           genres={genres}
           genresFiltered={genresFiltered}
           handleSelectGenre={this.handleSelectGenre}
+          handleDeleteAllGenre={this.handleDeleteAllGenre}
           handleAddGenre={this.handleAddGenre}
           handleDeleteBook={this.handleDeleteBook}
           handleModifyBook={this.handleModifyBook}
           handleDeleteGenre={this.handleDeleteGenre}
           handleNewBook={this.handleNewBook}
           handleDeleteAllBook={this.handleDeleteAllBook}
+          handleDeleteGlobalGenre={this.handleDeleteGlobalGenre}
           isLoaded={isLoaded}
         />
       </div>

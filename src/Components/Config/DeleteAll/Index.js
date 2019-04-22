@@ -6,9 +6,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DeleteIcon from '@material-ui/icons/Delete';
-import './DeleteAllBooks.css';
+import './DeleteAll.css';
 
-class DeleteAllBooks extends React.Component {
+class DeleteAll extends React.Component {
   constructor(props) {
     super(props);
     this.handleDeleteAllBook = this.handleDeleteAllBook.bind(this);
@@ -18,8 +18,8 @@ class DeleteAllBooks extends React.Component {
     visibleView: false
   };
   handleDeleteAllBook() {
-    const { handleDeleteAllBook } = this.props;
-    handleDeleteAllBook();
+    const { handleDeleteAll } = this.props;
+    handleDeleteAll();
     this.handleClose();
   }
   handleClickOpen = () => {
@@ -29,9 +29,10 @@ class DeleteAllBooks extends React.Component {
     this.setState({ open: false });
   };
   render() {
+    const { type } = this.props;
     return (
       <div className="deleteAllWrap">
-        <span>Delete all boks: </span>
+        <span>Delete all {type}: </span>
         <Button variant="contained" color="secondary" onClick={this.handleClickOpen}>
           <span>Delete</span> <DeleteIcon />
         </Button>
@@ -40,10 +41,10 @@ class DeleteAllBooks extends React.Component {
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">Delete all books</DialogTitle>
+          <DialogTitle id="form-dialog-title">Delete all {type}</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              Your books will be permanently deleted. You won't be able to retrieve anything you've added.
+              Your {type} will be permanently deleted. You won't be able to retrieve anything you've added.
             </DialogContentText>
           </DialogContent>
           <DialogActions>
@@ -67,4 +68,4 @@ class DeleteAllBooks extends React.Component {
   }
 }
 
-export default DeleteAllBooks;
+export default DeleteAll;

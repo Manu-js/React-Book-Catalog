@@ -1,15 +1,16 @@
 import React from "react";
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import DeleteAllBooks from "../DeleteAllBooks/Index.js"
+import DeleteAll from "../DeleteAll/Index.js"
+import DeleteGenre from "../DeleteGenre/Index.js"
+
 import "./ConfigOption.css";
 
-const Option = ({ handleDeleteAllBook }) => (
+const Option = ({ handleDeleteAllBook, handleDeleteGlobalGenre,handleDeleteAllGenre, genres }) => (
   <Grid container>
     <Grid item xs={12}>
-      <DeleteAllBooks handleDeleteAllBook={handleDeleteAllBook}></DeleteAllBooks>
-      <Button className="buttonLink" variant="contained" href={"https://www.linkedin.com/in/manuelsc/"}>My Linkedin</Button>
-      <Button className="buttonLink" variant="contained" href={"https://github.com/ManuQuery/React-Book-Catalog"}>My GitHub</Button>
+      <DeleteAll handleDeleteAll={handleDeleteAllBook} type={"books"}></DeleteAll>
+      <DeleteAll handleDeleteAll={handleDeleteAllGenre} type={"genres"}></DeleteAll>
+      <DeleteGenre handleDeleteGlobalGenre={handleDeleteGlobalGenre} genres={genres}></DeleteGenre>
     </Grid>
   </Grid>
 );

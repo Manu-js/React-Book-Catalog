@@ -16,19 +16,67 @@ class ModalEditBook extends Component {
     super(props);
     this.onBookUpdate = this.onBookUpdate.bind(this);
     this.deleteThisBook = this.deleteThisBook.bind(this);
+    this.handleAddNewGenre = this.handleAddNewGenre.bind(this);
+    this.handleDeleteGenre = this.handleDeleteGenre.bind(this);
   }
   state = {
     open: false,
-    visibleView: false
+    visibleView: false,
+    newBookData: {
+      tittle: '',
+      price: '',
+      genres: [],
+    }
   };
+
+  componentDidMount() {
+    const { bookSelected } = this.props;
+
+        this.setState({newBookData:bookSelected});
+  }
   deleteThisBook() {
     const { handleDeleteBook, bookSelected } = this.props;
     handleDeleteBook(bookSelected.id);
   }
 
   onBookUpdate(e) {
-    const { bookSelected, handleModifyBook } = this.props;
-    handleModifyBook(e.currentTarget.name, bookSelected, e.currentTarget.value);
+    const { handleModifyBook } = this.props;
+    handleModifyBook(this.state.newBookData);
+    this.handleClose();
+
+  }
+  handleAddNewGenre(text) {
+    this.setState(prevState => {
+      const newState = {
+        newBookData: {
+          ...prevState.newBookData,
+          genres: prevState.newBookData.genres.concat(text)
+        }
+      }
+      return newState;
+    })
+  }
+
+  updateInputValue(e) {
+    console.log(e.target.value);
+    const { newBookData } = this.state;
+    this.setState({
+      newBookData: {
+        ...newBookData,
+        [e.target.name]: e.target.value
+      }
+    });
+  }
+  handleDeleteGenre(idBook, genre) {
+    this.setState(prevState => {
+      const newState = {
+        newBookData: {
+          ...prevState.newBookData,
+          genres: genre
+        }
+      }
+      return newState;
+    })
   }
 
   handleClickOpen = () => {
@@ -47,7 +95,7 @@ class ModalEditBook extends Component {
   }
 
   render() {
-    const { bookSelected, handleDeleteGenre, handleAddGenre, genres } = this.props;
+    const { bookSelected} = this.props;
 
     return (
       <div className="editButton">
@@ -61,12 +109,12 @@ class ModalEditBook extends Component {
         >
           <DialogTitle id="form-dialog-title">Modify Book</DialogTitle>
           <DialogContent>
-            <TextField
+          <TextField
               id="tittle"
               label="Tittle"
               name="tittle"
-              value={bookSelected.tittle}
-              onChange={this.onBookUpdate}
+              value={this.state.newBookData.tittle}
+              onChange={evt => this.updateInputValue(evt)}
               margin="normal"
               fullWidth
             />
@@ -74,21 +122,22 @@ class ModalEditBook extends Component {
               id="price"
               label="Price"
               name="price"
-              value={bookSelected.price}
-              onChange={this.onBookUpdate}
+              value={this.state.newBookData.price}
+              onChange={evt => this.updateInputValue(evt)}
               margin="normal"
               fullWidth
             />
+
             <GenreList
-              selectBook={bookSelected}
-              handleDeleteGenre={handleDeleteGenre}
-              handleAddGenre={handleAddGenre}
+              selectBook={this.state.newBookData}
+              handleAddGenre={this.handleAddNewGenre}
+              handleDeleteGenre={this.handleDeleteGenre}
               editOption={true}
             />
-            <AddGenre 
-              handleAddGenre={handleAddGenre}
-              selectBook={bookSelected}
-              genres={genres}
+            <AddGenre
+              selectBook={this.state.newBookData}
+              handleAddGenre={this.handleAddNewGenre}
+              genres={this.state.newBookData.genres}
             />
           </DialogContent>
           <DialogActions>
@@ -103,7 +152,7 @@ class ModalEditBook extends Component {
             <Button
               variant="contained"
               color="primary"
-              onClick={this.handleClose}>
+              onClick={this.onBookUpdate}>
               Accept
             </Button>
           </DialogActions>
