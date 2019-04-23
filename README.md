@@ -2,9 +2,10 @@
 
 ## Getting Started
 
-This project was bootstrapped with Create React App. You need a package manager installed (like Node.js or Yarn). Then you'll need to install create-react-app
-#### $ npm install -g create-react-app
-#### $ yarn install -g create-react-app
+This project was bootstrapped with Create React App. You need a package manager installed (like npm or Yarn). Then you'll need to install create-react-app
+
+#### npm install -g create-react-app
+#### yarn install -g create-react-app
 ### `npm start`
 
 Runs the app in the development mode.<br>
