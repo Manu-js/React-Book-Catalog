@@ -1,6 +1,6 @@
 # Book catalog with React
 
-This is a books catalog made with react.js. You can manage genres and book and filter as well as filter by gender.
+This is a books catalog made with react.js. You can manage genres and books as well as filter by genre.
 
 ## Getting Started
 
