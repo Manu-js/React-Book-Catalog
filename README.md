@@ -1,5 +1,7 @@
 # Book catalog with React
 
+This is a books catalog made with react.js. You can manage genres and book and filter as well as filter by gender.
+
 ## Getting Started
 
 This project was bootstrapped with Create React App. You need a package manager installed (like npm or Yarn). Then you'll need to install create-react-app
