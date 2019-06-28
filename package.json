@@ -30,7 +30,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.8.1"
+    "@fortawesome/fontawesome-free": "^5.8.1",
+    "case-sensitive-paths-webpack-plugin": "^2.2.0"
   },
   "homepage": "./"
 }

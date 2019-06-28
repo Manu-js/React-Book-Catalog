@@ -1,6 +1,6 @@
 import React from "react";
 import Book from '../Book/Index'
-import "./BookList.css";
+import "./Booklist.css";
 
 const CheckList = ({books, 
   genres, 

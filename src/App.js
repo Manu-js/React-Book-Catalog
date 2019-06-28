@@ -11,7 +11,8 @@ class App extends Component {
       books: booksJson,
       genres: [],
       genresFiltered: [],
-      isLoaded: false
+      isLoaded: false,
+      apiResponse: ""
     };
     this.handleDeleteBook = this.handleDeleteBook.bind(this);
     this.handleModifyBook = this.handleModifyBook.bind(this);
@@ -24,8 +25,16 @@ class App extends Component {
     this.handleDeleteGlobalGenre = this.handleDeleteGlobalGenre.bind(this);
   }
 
+  callAPI() {
+    fetch("http://localhost:9000/testAPI")
+        .then(res => res.json())
+        .then(res => this.setState({ apiResponse: res }))
+        .catch(err => err);
+      }
+
   componentDidMount() {
     this.getGenres();
+    this.callAPI();
     setTimeout(
       function() {
         this.setState(prevState => {
@@ -71,9 +80,9 @@ class App extends Component {
   }
 
   getBookList() {
-    const { books, genresFiltered } = this.state;
+    const { books, genresFiltered, apiResponse } = this.state;
     let auxVar = [];
-    for (const book of books) {
+    for (const book of apiResponse) {
       const found = book.genres.some(r => genresFiltered.indexOf(r) >= 0);
       if (found === true) {
         auxVar.push(book);
@@ -82,7 +91,7 @@ class App extends Component {
     if (auxVar.length !== 0) {
       return auxVar;
     } else {
-      return books;
+      return apiResponse;
     }
   }
 
